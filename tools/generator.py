@@ -6,30 +6,6 @@ from typing import Dict
 from typing import List
 
 
-START_PATH = '.'
-
-BLACK_LIST = ['lab21', 'lab22', 'lab25']
-
-BASIC_USER_LIST = ['Yashin', 'Potapov', 'Tuzova']
-
-TEMPLATE = u'**Поток:** <ins>{thread}</ins>.</br>**Дополнительное задание:** {additional_task}</br></br>' \
-    '**Вариант №:** <ins><Ваш номер варинта></ins></br>**Задание:** <Текст задания>'
-
-PATH_TO_TEMPLATE_MAKEFILE = './tools/Makefile'
-
-MD_TITLE_LABS_DESCRIPTIONS: Dict[str, str] = {
-    'KP6': u'# Курсовая работа. Задание 6. Реализация базы данных на файлах.\n',
-    'KP7': u'# Курсовая работа. Задание 7. Разреженные матрицы.\n',
-    'KP8': u'# Курсовая работа. Задание 8. Линейные списки.\n',
-    'KP9': u'# Курсовая работа. Задание 9. Сортировка и поиск.\n',
-    'lab21': u'# Лабораторная работа № 21. Автоматизация рутинных задач на Bash.\n',
-    'lab22': u'# Лабораторная работа № 22. Издательская система LaTeX.\n',
-    'lab23': u'# Лабораторная работа № 23. Деревья.\n',
-    'lab24': u'# Лабораторная работа № 24. Деревья выражений.\n',
-    'lab25': u'# Лабораторная работа № 25. Система сборки проектов make.\n',
-    'lab26': u'# Лабораторная работа № 26. Абстрактные типы данных.\n',
-}
-
 NUMBER_OF_VAR: Dict[str, int] = {
     'linux': 1,
     'hack': 1,
@@ -46,6 +22,8 @@ NUMBER_OF_VAR: Dict[str, int] = {
     'taylor': 28,
     'numerical_methods': 28
 }
+
+BLACK_LIST = ['linux', 'hack', 'reverse', 'turing_diagrams']
 
 TASK_TO_LAB: Dict[str, str]
 
@@ -115,9 +93,13 @@ def clear() -> None:
         except FileNotFoundError:
             pass
 
+def generate_file_solution(path: str) -> None:
+    for i in range(1, NUMBER_OF_VAR[os.path.basename(path)] + 1):
+        shutil.copyfile('tasks\\turing_machine\\template.tu', os.path.join(path, str(i), 'solution.tu'))
+
+
 def generate_repository(users: List[str]) -> None:
-    clear()
-    generate_var_dir()
+    generate_file_solution('tasks\\turing_machine')
 
 
 

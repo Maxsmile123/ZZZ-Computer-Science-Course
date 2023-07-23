@@ -1,0 +1,128 @@
+- group:    Mutual Exclusion / Part I
+  start:    16-02-2023 12:00
+  deadline: 23-02-2023 23:59
+  tasks:
+    - task: mutex/deadlock
+      score: 100
+    - task: mutex/dining
+      score: 100
+    - task: mutex/mutexed
+      score: 100
+
+- group:    Mutual Exclusion / Part II
+  start:    23-02-2023 12:00
+  deadline: 02-03-2023 23:59
+  tasks:
+    - task: mutex/livelock
+      score: 100
+    - task: mutex/mutex
+      score: 200
+    - task: mutex/spinlock
+      score: 200
+    - task: mutex/try-lock
+      score: 200
+
+- group:    Condition Variables
+  start:    02-03-2023 21:00
+  deadline: 09-03-2023 23:59
+  tasks:
+    - task: cond/condvar
+      score: 200
+    - task: cond/semaphore
+      score: 100
+    - task: cond/barrier
+      score: 100
+    - task: cond/wait_group
+      score: 100
+
+- group:    Futures / Std
+  start:    02-03-2023 21:00
+  deadline: 16-03-2023 23:59
+  tasks:
+    - task: futures/std
+      score: 200
+
+- group:    Tasks / Thread Pool
+  start:    02-03-2023 21:00
+  deadline: 16-03-2023 23:59
+  tasks:
+    - task: tasks/thread-pool
+      score: 300
+
+- group:    Fibers / Part I
+  start:    10-03-2023 12:00
+  deadline: 16-03-2023 23:59
+  tasks:
+    - task: fibers/coro
+      score: 200
+
+- group:    Fibers / Part II
+  start:    10-03-2023 12:00
+  deadline: 23-03-2023 23:59
+  tasks:
+    - task: fibers/yield
+      score: 200
+    - task: fibers/sleep_for
+      score: 300
+
+- group:    Cache Coherency
+  start:    18-03-2023 15:00
+  deadline: 30-03-2023 23:59
+  tasks:
+    - task: mutex/queue
+      score: 200
+
+- group:    Fibers / Part III
+  start:    10-03-2023 12:00
+  deadline: 06-04-2023 23:59
+  tasks:
+    - task: fibers/mutex
+      score: 500
+
+- group:    Tasks / Part II
+  start:    18-03-2023 15:00
+  deadline: 06-04-2023 23:59
+  tasks:
+    - task: tasks/executors
+      score: 400
+
+- group:    Futures / Functional
+  start:    21-04-2023 12:00
+  deadline: 04-05-2023 23:59
+  tasks:
+    - task: futures/fun
+      score: 500
+
+- group:    Tasks / Part III / Scheduler
+  start:    21-04-2023 12:00
+  deadline: 11-05-2023 23:59
+  tasks:
+    - task: lockfree/steal
+      score: 200
+    - task: tasks/scheduler
+      score: 600
+
+- group:    Lock-Free / Memory management
+  start:    30-04-2023 12:00
+  deadline: 01-06-2023 23:59
+  tasks:
+    - task: lockfree/stack
+      score: 100
+    - task: lockfree/shared_ptr
+      score: 100
+    - task: lockfree/queue
+      score: 200
+
+- group:    Futures / Lazy
+  start:    11-05-2023 12:00
+  deadline: 01-06-2023 23:59
+  tasks:
+    - task: futures/lazy
+      score: 500
+
+- group:    My Exe
+  start:    21-04-2023 12:00
+  deadline: 01-06-2023 23:59
+  tasks:
+    - task: my/exe
+      score: 10

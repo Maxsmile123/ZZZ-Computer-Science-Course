@@ -23,7 +23,19 @@ NUMBER_OF_VAR: Dict[str, int] = {
     'numerical_methods': 28
 }
 
-BLACK_LIST = ['linux', 'hack', 'reverse', 'turing_diagrams']
+BLACK_LIST = ['linux', 'hack', 'reverse', 'turing_diagrams', 'turing_machine']
+
+POINT: Dict[str, int] = {
+    'nam': '.nam',
+    'geometry': '.c',
+    'finite_state_machine': '.c',
+    'integers': '.c',
+    'bitsets': '.c',
+    'linerization': '.c',
+    'matrix': '.c',
+    'taylor': '.c',
+    'numerical_methods': '.c'
+}
 
 TASK_TO_LAB: Dict[str, str]
 
@@ -94,12 +106,21 @@ def clear() -> None:
             pass
 
 def generate_file_solution(path: str) -> None:
-    for i in range(1, NUMBER_OF_VAR[os.path.basename(path)] + 1):
-        shutil.copyfile('tasks\\turing_machine\\template.tu', os.path.join(path, str(i), 'solution.tu'))
+    lab = os.path.basename(path)
+    for i in range(1, NUMBER_OF_VAR[lab] + 1):
+        shutil.copyfile(os.path.join(path, 'template' + POINT[lab]),
+                        os.path.join(path, str(i), 'solution' + POINT[lab]))
+        if lab == 'finite_state_machine':
+            shutil.copyfile(os.path.join(path, 'template.txt'),
+                        os.path.join(path, str(i), 'solution.txt'))
 
 
 def generate_repository(users: List[str]) -> None:
-    generate_file_solution('tasks\\turing_machine')
+    base_path = 'tasks'
+    for lab in NUMBER_OF_VAR.keys():
+        if lab in BLACK_LIST:
+            continue
+        generate_file_solution(os.path.join(base_path, lab))
 
 
 

@@ -36,6 +36,11 @@ _Linux is not just an operating system, it is a way of life, a philosophy, a way
 - [_rm_](https://man7.org/linux/man-pages/man1/rm.1.html) - удаление файлов и директорий. Сокращение от ```remove```
 - [_ls_](https://man7.org/linux/man-pages/man1/ls.1.html) - печать содержимого директории.
 - [_pwd_](https://man7.org/linux/man-pages/man1/pwd.1.html) - печать текущей рабочей директории. Сокращение от ```print working directory```
+- [_chmod_](https://man7.org/linux/man-pages/man1/chmod.1.html) - изменение прав доступа к файлу.
+- [_head_](https://man7.org/linux/man-pages/man1/head.1.html) - ограничение на вывод сверху.
+- [_tail_](https://man7.org/linux/man-pages/man1/tail.1.html) - ограничение на вывод снизу.
+- [_tar_](https://man7.org/linux/man-pages/man1/tar.1.html) - архивирование данных с сжатием.
+- [_sort_](https://man7.org/linux/man-pages/man1/sort.1.html) - сортировка данных.
 - [_mv_](https://man7.org/linux/man-pages/man1/mv.1.html) - перемещение файла. Сокращение от ```move```
 - [_cp_](https://man7.org/linux/man-pages/man1/cp.1.html) - копирование файла. Сокращение от ```copy```
 > Обратите внимание, чем копирование отличается от перемещения. Это важно будет в следующем семестре, когда мы будем говорить про C++.
@@ -47,14 +52,14 @@ _Linux is not just an operating system, it is a way of life, a philosophy, a way
 
 ## Задание
 
-Вам необходимо решить все задачи в этой директории - они расположены в соответсвующих поддиректориях. 
+Вам необходимо решить задачи вашего варианта. Свой вариант можно найти [тут](variants.md). 
 - Для оценки 5 нужно правильно сделать все задачи.
 - Для оценки 4 нужно сделать 80% задач.
 - Для оценки 3 достаточно сделать 60% задач.
 
 При решениии запрещается использовать утилиты, не описанные выше.
 
-Решение задачи оформляйте в виде ```.bash``` файла.
+Решение каждой задачи оформляйте в виде ```.bash``` файла.
 
 [Прочтите](../../docs/ci.md), если не прочитали, как сдавать задачи.
 

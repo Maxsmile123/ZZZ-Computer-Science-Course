@@ -6,7 +6,7 @@ _You don't have to be an engineer to be a racing driver, but you do have to have
 
 ## Просьба
 
-При форке репозитория делайте его приватным! Пожалуйста, не выкладывайте решения задач в открытый доступ!
+Не воруйте решения у своих коллег! Так вы ничему не научитесь, а, вероятно, даже научитесь плохому, потому что большинство студентов пишут [плохой код](https://skillbox.ru/media/code/chto_takoe_plokhoy_kod_i_chto_s_etim_delat/).
 
 Спасибо ❤️
 
@@ -23,10 +23,5 @@ _You don't have to be an engineer to be a racing driver, but you do have to have
 
 ## Ссылки
 
-- [Репозитории с примерами](https://gitlab.com/l2288)
-
-## Библиотеки
-
-### Внешние
 
 

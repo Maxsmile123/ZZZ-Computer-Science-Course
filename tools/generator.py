@@ -55,32 +55,6 @@ ADDITIONAL_TASKS = {
     'lab26': u'Написать бенчмарк сравнения с std::deque/std::stack/std::queue',
 }
 
-
-def generate_mds(path_to_lab: str) -> None:
-    lab = os.path.basename(path_to_lab)
-    user = path_to_lab.split(os.sep)[-2]
-    path_to_readme = os.path.join(path_to_lab, 'README.md')
-    if not check_if_need_to_generate(path_to_readme):
-        return
-    with codecs.open(path_to_readme, 'w', 'utf-16') as file:
-        file.write(MD_TITLE_LABS_DESCRIPTIONS.get(lab) + TEMPLATE.format(
-            thread='advanced' if user not in BASIC_USER_LIST else 'basic',
-            additional_task='-' if user in BASIC_USER_LIST else ADDITIONAL_TASKS.get(lab)
-        ))
-
-
-def generate_makefiles(path_to_lab: str) -> None:
-    if os.path.basename(path_to_lab) in BLACK_LIST:
-        return
-    path_to_makefile = os.path.join(path_to_lab, 'Makefile')
-    try:
-        os.remove(path_to_makefile)
-        os.remove(os.path.join(os.path.dirname(path_to_lab), 'Makefile'))
-    except FileNotFoundError:
-        pass
-    shutil.copyfile(PATH_TO_TEMPLATE_MAKEFILE, path_to_makefile)
-
-
 def generate_var_dir() -> None:
     for lab, num_var in NUMBER_OF_VAR.items():
         path = 'tasks'

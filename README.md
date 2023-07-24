@@ -6,7 +6,7 @@ _You don't have to be an engineer to be a racing driver, but you do have to have
 
 ## Просьба
 
-Не воруйте решения у своих коллег! Так вы ничему не научитесь, а, вероятно, даже научитесь плохому, потому что большинство студентов пишут [плохой код](https://skillbox.ru/media/code/chto_takoe_plokhoy_kod_i_chto_s_etim_delat/).
+Не воруйте решения у своих коллег! Так вы ничему не научитесь, а, вероятно, даже научитесь плохому, потому что большинство студентов пишут [плохой код](https://lvivity.com/how-to-write-good-code).
 
 Спасибо ❤️
 

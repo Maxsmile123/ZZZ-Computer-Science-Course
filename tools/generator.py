@@ -23,7 +23,7 @@ NUMBER_OF_VAR: Dict[str, int] = {
     'numerical_methods': 28
 }
 
-BLACK_LIST = ['linux', 'hack', 'reverse', 'turing_diagrams', 'turing_machine']
+BLACK_LIST = ['linux', 'hack', 'reverse']
 
 POINT: Dict[str, int] = {
     'nam': '.nam',
@@ -89,12 +89,27 @@ def generate_file_solution(path: str) -> None:
                         os.path.join(path, str(i), 'solution.txt'))
 
 
+def rebuild_struct(path: str) -> None:
+    lab = os.path.basename(path)
+    path_to_tasks = os.path.join(path, 'tasks')
+    if not os.path.exists(path_to_tasks):
+        os.mkdir(path_to_tasks)
+    for i in range(1, NUMBER_OF_VAR[lab] + 1):
+        task_path = os.path.join(path, str(i))
+        if os.path.exists(task_path) and not os.path.exists(os.path.join(path_to_tasks, str(i))):
+            shutil.copytree(task_path, os.path.join(path_to_tasks, str(i)))
+        if os.path.exists(task_path):
+            shutil.rmtree(task_path)
+
+
+
+
 def generate_repository(users: List[str]) -> None:
     base_path = 'tasks'
     for lab in NUMBER_OF_VAR.keys():
         if lab in BLACK_LIST:
             continue
-        generate_file_solution(os.path.join(base_path, lab))
+        rebuild_struct(os.path.join(base_path, lab))
 
 
 

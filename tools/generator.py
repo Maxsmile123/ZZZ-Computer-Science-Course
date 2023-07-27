@@ -4,6 +4,10 @@ import shutil
 import time
 from typing import Dict
 from typing import List
+from typing import Tuple
+
+
+TASK_README_TEMPLATE = u'# Вариант № {var}\n**Сложность:** {comp}\n\n**Задание:** {description}\n---{other}'
 
 
 NUMBER_OF_VAR: Dict[str, int] = {
@@ -101,15 +105,49 @@ def rebuild_struct(path: str) -> None:
         if os.path.exists(task_path):
             shutil.rmtree(task_path)
 
+def var_parser(path_to_var: str) -> Dict[int, Tuple[str, str]]:
+    # Dict is: key = num_of_var, value = Tuple (сomplexity, task description)
+    lab_description: Dict[int, List[str, str]] = {}
+    with open(path_to_var, 'r', encoding='utf-8') as file:
+        for string in file.readlines():
+            lst_string = string.split('—')
+            assert len(lst_string) == 2
+            if '***' in lst_string[0]:
+                lab_description[int(lst_string[0].replace('*** ', ''))] = ['Очень сложно', lst_string[1]]
+            elif '**' in lst_string[0]:
+                lab_description[int(lst_string[0].replace('** ', ''))] = ['Сложно', lst_string[1]]
+            elif '*' in lst_string[0]:
+                lab_description[int(lst_string[0].replace('* ', ''))] = ['Чуть сложнее cтандартного', lst_string[1]]
+            else:
+                lab_description[int(lst_string[0].replace(' ', ''))] = ['Стандартный', lst_string[1]]
+
+    return lab_description
+
+
+def generate_task_description(path_to_lab: str, path_to_var: str, other: str = '') -> None:
+    lab = os.path.basename(path_to_lab)
+    lab_description = var_parser(path_to_var)
+    for var in range(1, NUMBER_OF_VAR[lab] + 1):
+        path_to_task_readme = os.path.join(path_to_lab, 'tasks', str(var), 'readme.md')
+        if not os.path.exists(path_to_task_readme):
+            open(path_to_task_readme, 'a+').close()
+        with open(path_to_task_readme, 'w', encoding='utf-8') as file:
+            file.write(TASK_README_TEMPLATE.format(
+                var=var,
+                description=lab_description[var][1],
+                comp=lab_description[var][0],
+                other=other
+            ))
 
 
 
 def generate_repository(users: List[str]) -> None:
     base_path = 'tasks'
-    for lab in NUMBER_OF_VAR.keys():
-        if lab in BLACK_LIST:
-            continue
-        rebuild_struct(os.path.join(base_path, lab))
+    generate_task_description(os.path.join(base_path, 'turing_machine'), os.path.join('tools', 'l05-2011.txt'))
+    # for lab in NUMBER_OF_VAR.keys():
+    #     if lab in BLACK_LIST:
+    #         continue
+    #     rebuild_struct(os.path.join(base_path, lab))
 
 
 

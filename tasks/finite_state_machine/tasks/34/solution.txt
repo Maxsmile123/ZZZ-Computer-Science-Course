@@ -1,1 +1,0 @@
-// Write here a regular expression equivalent to your finite automaton

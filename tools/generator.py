@@ -86,11 +86,15 @@ def clear() -> None:
 def generate_file_solution(path: str) -> None:
     lab = os.path.basename(path)
     for i in range(1, NUMBER_OF_VAR[lab] + 1):
-        shutil.copyfile(os.path.join(path, 'template' + POINT[lab]),
-                        os.path.join(path, str(i), 'solution' + POINT[lab]))
         if lab == 'finite_state_machine':
-            shutil.copyfile(os.path.join(path, 'template.txt'),
-                        os.path.join(path, str(i), 'solution.txt'))
+            shutil.copyfile(os.path.join(path, 'regex.c'),
+                        os.path.join(path, 'tasks', str(i), 'regex.c'))
+            os.remove(os.path.join(os.path.join(path, 'tasks', str(i), 'solution.txt')))
+            os.rename(os.path.join(os.path.join(path, 'tasks', str(i), 'solution.c')),
+                    os.path.join(os.path.join(path, 'tasks', str(i), 'FSM.c')))
+            
+        # shutil.copyfile(os.path.join(path, 'template' + POINT[lab]),
+        #                 os.path.join(path, str(i), 'solution' + POINT[lab]))
 
 
 def rebuild_struct(path: str) -> None:
@@ -110,8 +114,9 @@ def var_parser(path_to_var: str) -> Dict[int, Tuple[str, str]]:
     lab_description: Dict[int, List[str, str]] = {}
     with open(path_to_var, 'r', encoding='utf-8') as file:
         for string in file.readlines():
-            lst_string = string.split('—')
-            assert len(lst_string) == 2
+            lst_string = string.split('-')
+            if len(lst_string) != 2:
+                raise Exception(f'Wrong string format: {lst_string}')
             if '***' in lst_string[0]:
                 lab_description[int(lst_string[0].replace('*** ', ''))] = ['Очень сложно', lst_string[1]]
             elif '**' in lst_string[0]:
@@ -142,12 +147,12 @@ def generate_task_description(path_to_lab: str, path_to_var: str, other: str = '
 
 
 def generate_repository(users: List[str]) -> None:
-    base_path = 'tasks'
-    generate_task_description(os.path.join(base_path, 'turing_machine'), os.path.join('tools', 'l05-2011.txt'))
-    # for lab in NUMBER_OF_VAR.keys():
-    #     if lab in BLACK_LIST:
-    #         continue
-    #     rebuild_struct(os.path.join(base_path, lab))
+    base_path = 'tasks' 
+    generate_task_description(os.path.join(base_path, 'integers'), os.path.join('tools', 'I12-2011.txt'))
+    for lab in NUMBER_OF_VAR.keys():
+        if lab in BLACK_LIST:
+            continue
+        generate_file_solution(os.path.join(base_path, lab))
 
 
 

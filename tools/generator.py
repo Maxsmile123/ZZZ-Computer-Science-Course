@@ -2,6 +2,7 @@ import os
 import shutil
 import yaml
 import logging
+from random import shuffle
 
 from typing import Dict
 from typing import List
@@ -109,16 +110,15 @@ class Repository:
         if filename:
             with open(filename, 'r') as file:
                 users.append(file.readline())
+        else:
+            for i in range(1, 28):
+                users.append(f'student{i}')
         
         return users
 
 
     def create_file(filepath: str) -> None:
         open(filepath, 'a+').close()
-
-    
-    def generate(self) -> None:
-        self.generate_repository()
 
 
     def generate_tasks_struct(self) -> None:
@@ -150,7 +150,7 @@ class Repository:
         self,
         path_to_tasks: str,
     ) -> None:
-        lab = os.path.dirname(path_to_tasks)
+        lab = os.path.basename(os.path.dirname(path_to_tasks))
         for var in range(1, self.number_of_var[lab] + 1):
             for template_filename, solution_filename in self.copy_files.values():
                     t_path = os.path.join(self.template_dir, template_filename)
@@ -203,10 +203,13 @@ class Repository:
     def generate_task_description(
             self,
             path_to_tasks: str,
-            path_to_var: str,
+            path_to_var: Optional[str],
             other: str = ''
         ) -> None:
-        lab = os.path.dirname(path_to_tasks)
+        if not path_to_var:
+            return
+
+        lab = os.path.basename(os.path.dirname(path_to_tasks))
         lab_description = self.var_parser_(os.path(path_to_var))
         for var in range(1, self.number_of_var[lab] + 1):
             path_to_task_readme = os.path.join(path_to_tasks, str(var), 'readme.md')
@@ -222,21 +225,37 @@ class Repository:
                 ))
 
 
+    def generate_variants(self, path_to_tasks: str) -> None:
+        lab = os.path.basename(os.path.dirname(path_to_tasks))
+        
+        path_to_file = os.path.join(os.path.dirname(path_to_tasks), 'variants.md')
+        with open(path_to_file, 'w') as file:
+            file.write('| **Студент** | **Вариант**|')
+            file.write('|-------------|------------|')
+            variants = [x for x in range(1, self.number_of_var[lab] + 1)]
+            shuffle(variants)
+            for i, user in enumerate(self.students):
+                file.write(f'| {user} | [{variants[i]}]({variants[i]}) |')
+
+
+
+
+
     def generate_repository(self) -> None:
-        self.clear_repository()
-        self.generate_tasks_struct()
+        # self.clear_repository()
+        # self.generate_tasks_struct()
         path_to_task: str = ''
         for task in self.number_of_var.keys():
             path_to_task = os.path.join(self.path, task, 'tasks')
-            self.generate_file_solution(path_to_task)
-            self.generate_task_description(
-                path_to_task,
-                self.var_data_paths[task],
-                self.others_descriptions[task]
-            )
+            self.generate_variants(path_to_task)
+            # self.generate_file_solution(path_to_task)
+            # self.generate_task_description(
+            #     path_to_task,
+            #     self.var_data_paths[task],
+            #     self.others_descriptions[task]
+            # )
 
 
 if __name__ == '__main__':
     repo = Repository('tasks', './tools/config.yaml')
-    repo.print_values()
-    # repo.generate()
+    repo.generate_repository()

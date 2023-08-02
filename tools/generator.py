@@ -59,7 +59,7 @@ class Repository:
         self.path_to_tasks = config['path_to_task']
         self.students = self.load_users(config.get('users_list'))
         for task, description in config.get('task_descriptions', {}).items():
-            self.number_of_var[task] = description.get('var_num', 0)
+            self.number_of_var[task] = description.get('var_num', 1)
             self.var_data_paths[task] = description.get('data_path', None)
             self.copy_files[task] = description.get('template_solution', {})
             self.others_descriptions[task] = description.get('other_description', '')
@@ -108,7 +108,7 @@ class Repository:
     def load_users(self, filename: str) -> List[str]:
         users: List[str] = []
         if filename:
-            with open(filename, 'r') as file:
+            with open(filename, 'r', encoding='utf-8') as file:
                 users.append(file.readline())
         else:
             for i in range(1, 28):
@@ -203,7 +203,7 @@ class Repository:
     def generate_task_description(
             self,
             path_to_tasks: str,
-            path_to_var: Optional[str],
+            path_to_var: str = '',
             other: str = ''
         ) -> None:
         if not path_to_var:
@@ -229,13 +229,17 @@ class Repository:
         lab = os.path.basename(os.path.dirname(path_to_tasks))
         
         path_to_file = os.path.join(os.path.dirname(path_to_tasks), 'variants.md')
-        with open(path_to_file, 'w') as file:
-            file.write('| **Студент** | **Вариант**|')
-            file.write('|-------------|------------|')
-            variants = [x for x in range(1, self.number_of_var[lab] + 1)]
+        with open(path_to_file, 'w', encoding='utf-8') as file:
+            file.write(u'| **Студент** | **Вариант**|\n')
+            file.write('|-------------|------------|\n')
+            max_var = self.number_of_var[lab]
+            variants = [(x % max_var) + 1 for x in range(1, max_var + 1 + len(self.students))]
             shuffle(variants)
             for i, user in enumerate(self.students):
-                file.write(f'| {user} | [{variants[i]}]({variants[i]}) |')
+                file.write(u'| {user} | [{var}](./tasks/{var}) |\n'.format(
+                    user=user,
+                    var=variants[i]
+                ))
 
 
 

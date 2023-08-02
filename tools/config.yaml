@@ -1,8 +1,10 @@
-users_list: ./tools/students
+# users_list: ./tools/students
 template_dir: ./tools/templates
 path_to_task: ./tasks
 task_descriptions: {
-  linux: {},
+  linux: {
+    var_num: 5,
+  },
   hack: {},
   turing_machine: {
     var_num: 53,

@@ -1,3 +1,29 @@
-| **Студент**                                                              | **Вариант**                       |
-|-------------------------------------------------------------------------------|-----------------------------------|
-| Иванов Иван  | [2](2)                              |
+| **Студент** | **Вариант**|
+|-------------|------------|
+| student1 | [1](./tasks/1) |
+| student2 | [1](./tasks/1) |
+| student3 | [4](./tasks/4) |
+| student4 | [3](./tasks/3) |
+| student5 | [3](./tasks/3) |
+| student6 | [3](./tasks/3) |
+| student7 | [3](./tasks/3) |
+| student8 | [4](./tasks/4) |
+| student9 | [2](./tasks/2) |
+| student10 | [3](./tasks/3) |
+| student11 | [5](./tasks/5) |
+| student12 | [4](./tasks/4) |
+| student13 | [5](./tasks/5) |
+| student14 | [3](./tasks/3) |
+| student15 | [2](./tasks/2) |
+| student16 | [5](./tasks/5) |
+| student17 | [2](./tasks/2) |
+| student18 | [4](./tasks/4) |
+| student19 | [1](./tasks/1) |
+| student20 | [1](./tasks/1) |
+| student21 | [1](./tasks/1) |
+| student22 | [4](./tasks/4) |
+| student23 | [5](./tasks/5) |
+| student24 | [2](./tasks/2) |
+| student25 | [5](./tasks/5) |
+| student26 | [2](./tasks/2) |
+| student27 | [5](./tasks/5) |

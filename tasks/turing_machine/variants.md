@@ -1,3 +1,29 @@
-| **Студент**                                                              | **Вариант**                       |
-|-------------------------------------------------------------------------------|-----------------------------------|
-| Иванов Иван  | [2](2)                              |
+| **Студент** | **Вариант**|
+|-------------|------------|
+| student1 | [24](./tasks/24) |
+| student2 | [50](./tasks/50) |
+| student3 | [12](./tasks/12) |
+| student4 | [31](./tasks/31) |
+| student5 | [51](./tasks/51) |
+| student6 | [39](./tasks/39) |
+| student7 | [15](./tasks/15) |
+| student8 | [42](./tasks/42) |
+| student9 | [37](./tasks/37) |
+| student10 | [30](./tasks/30) |
+| student11 | [7](./tasks/7) |
+| student12 | [46](./tasks/46) |
+| student13 | [5](./tasks/5) |
+| student14 | [2](./tasks/2) |
+| student15 | [22](./tasks/22) |
+| student16 | [29](./tasks/29) |
+| student17 | [10](./tasks/10) |
+| student18 | [23](./tasks/23) |
+| student19 | [45](./tasks/45) |
+| student20 | [13](./tasks/13) |
+| student21 | [33](./tasks/33) |
+| student22 | [25](./tasks/25) |
+| student23 | [52](./tasks/52) |
+| student24 | [22](./tasks/22) |
+| student25 | [23](./tasks/23) |
+| student26 | [3](./tasks/3) |
+| student27 | [14](./tasks/14) |

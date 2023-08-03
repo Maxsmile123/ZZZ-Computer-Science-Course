@@ -10,7 +10,12 @@ from typing import Optional
 
 from schema import Schema, SchemaError, Optional
 
-TASK_README_TEMPLATE = u'# Вариант № {var}\n**Сложность:** {comp}\n\n**Задание:** {description}\n---{other}'
+TASK_README_TEMPLATE = u'# Вариант № {var}\n'
+u'**Сложность:** {comp}\n'
+u'\n**Задание:** {description}\n'
+u'---{other}'
+
+DEFAULT_USERS_NUM = 28
 
 CONFIG_SCHEMA = Schema({
     Optional('users_list'): str,
@@ -64,27 +69,6 @@ class Repository:
             self.copy_files[task] = description.get('template_solution', {})
             self.others_descriptions[task] = description.get('other_description', '')
 
-    def print_values(self) -> None:
-        print('copy_files')
-        for key, value in self.copy_files.items():
-            print(f'{key} - {value}')
-
-        print()
-
-        print('number_of_var')
-        for key, value in self.number_of_var.items():
-            print(f'{key} - {value}')
-
-        print()
-        print('var_data_paths')
-        for key, value in self.var_data_paths.items():
-            print(f'{key} - {value}')
-
-        print()
-        print('others_descriptions')
-        for key, value in self.others_descriptions.items():
-            print(f'{key} - {value}')
-
 
     @staticmethod
     def validate_config(config) -> None:
@@ -107,11 +91,15 @@ class Repository:
 
     def load_users(self, filename: str) -> List[str]:
         users: List[str] = []
-        if filename:
+        if filename and os.path.exists(filename):
+            logging.info(f'[+] Loading users from {filename}')
             with open(filename, 'r', encoding='utf-8') as file:
                 users.append(file.readline())
         else:
-            for i in range(1, 28):
+            logging.warning('[?] Unable load users from '
+                            f'{filename if filename else "file"}\n'
+                            'Generate default users.') 
+            for i in range(1, DEFAULT_USERS_NUM):
                 users.append(f'student{i}')
         
         return users
@@ -240,9 +228,6 @@ class Repository:
                     user=user,
                     var=variants[i]
                 ))
-
-
-
 
 
     def generate_repository(self) -> None:

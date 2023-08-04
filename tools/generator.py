@@ -198,7 +198,7 @@ class Repository:
             path_to_var: str = '',
             other: str = ''
         ) -> None:
-        if not path_to_var:
+        if not (path_to_var and os.path.exists(path_to_var)):
             return
 
         lab = os.path.basename(os.path.dirname(path_to_tasks))
@@ -233,15 +233,15 @@ class Repository:
                     var=variants[i]
                 ))
 
-
+    # TODO: Make partial generation via config parameters
     def generate_repository(self) -> None:
-        self.clear_repository()
-        self.generate_tasks_struct()
+        #self.clear_repository()
+        #self.generate_tasks_struct()
         path_to_task: str = ''
         for task in self.number_of_var.keys():
             path_to_task = os.path.join(self.path, task, 'tasks')
             self.generate_variants(path_to_task)
-            self.generate_file_solution(path_to_task)
+            #self.generate_file_solution(path_to_task)
             self.generate_task_description(
                 path_to_task,
                 self.var_data_paths[task],

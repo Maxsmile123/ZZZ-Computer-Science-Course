@@ -1,35 +1,33 @@
 import os
 import logging
 import shutil
+import schema
 import yaml
 
 from random import shuffle
-from schema import Schema, SchemaError, Optional
+from schema import Schema, SchemaError
 
 from typing import Dict
 from typing import List
 from typing import Optional
 
 
-TASK_README_TEMPLATE = u'# Вариант № {var}\n'
-u'**Сложность:** {comp}\n'
-u'\n**Задание:** {description}\n'
-u'---{other}'
+TASK_README_TEMPLATE = u'# Вариант № {var}\n**Сложность:** {comp}\n\n**Задание:** {description}\n---{other}'
 
 DEFAULT_USERS_NUM = 28
 
 CONFIG_SCHEMA = Schema({
-    Optional('users_list'): str,
+    schema.Optional('users_list'): str,
     'template_dir': str,
     'path_to_task': str,
-    Optional('task_descriptions'): {
+    schema.Optional('task_descriptions'): {
         str : {
-            Optional('var_num'): int,
-            Optional('data_path'): str,
-            Optional('template_solution'): {
+            schema.Optional('var_num'): int,
+            schema.Optional('data_path'): str,
+            schema.Optional('template_solution'): {
                 str: str
             },
-            Optional('other_description'): str
+            schema.Optional('other_description'): str
         },
     },        
 })
@@ -45,8 +43,8 @@ class Repository:
             config_path: str
         ) -> None:
         self.path = path
-        self.template_dir: str = ''
-        self.path_to_tasks: str = ''
+        self.template_dir: Optional[str] = None
+        self.path_to_tasks: Optional[str] = None
         self.copy_files: Dict[str, Dict[str, str]] = {}
         self.number_of_var: Dict[str, int] = {}
         self.var_data_paths: Dict[str, Optional[str]] = {}
@@ -92,7 +90,7 @@ class Repository:
 
 
     @staticmethod
-    def load_users(filename: str) -> List[str]:
+    def load_users(filename: Optional[str]) -> List[str]:
         users: List[str] = []
         if filename and os.path.exists(filename):
             logging.info(f'[+] Loading users from {filename}')
@@ -164,8 +162,15 @@ class Repository:
 
 
     @staticmethod
-    def var_parser_(path_to_var: str) -> Dict[int, List[str]]:
-        # Dict is: key = num_of_var, value = Tuple (сomplexity, task description)
+    # Return dict is: key = num_of_var, value = Tuple (сomplexity, task description)
+    def var_parser_(path_to_var: Optional[str]) -> Optional[Dict[int, List[str]]]:
+        if not path_to_var:
+            return None
+        path_to_var = os.path.join(path_to_var)
+        if not os.path.exists(path_to_var):
+            logging.warning(f'[-] File {path_to_var} isn\'t exists')
+            return None
+
         lab_description: Dict[int, List[str, str]] = {}
         with open(path_to_var, 'r', encoding='utf-8') as file:
             for string in file.readlines():
@@ -198,11 +203,14 @@ class Repository:
             path_to_var: str = '',
             other: str = ''
         ) -> None:
-        if not (path_to_var and os.path.exists(path_to_var)):
-            return
 
         lab = os.path.basename(os.path.dirname(path_to_tasks))
-        lab_description = self.var_parser_(os.path(path_to_var))
+        lab_description = self.var_parser_(path_to_var)
+        if lab_description is None:
+            logging.warning(f'[-] Description for {lab} wasn\'t created.')
+            return
+        
+        logging.info(f'[+] Generate for {lab}.')
         for var in range(1, self.number_of_var[lab] + 1):
             path_to_task_readme = os.path.join(path_to_tasks, str(var), 'readme.md')
             if not os.path.exists(path_to_task_readme):
@@ -218,6 +226,9 @@ class Repository:
 
 
     def generate_variants(self, path_to_tasks: str) -> None:
+        if not path_to_tasks:
+            return
+
         lab = os.path.basename(os.path.dirname(path_to_tasks))
         
         path_to_file = os.path.join(os.path.dirname(path_to_tasks), 'variants.md')
@@ -240,7 +251,7 @@ class Repository:
         path_to_task: str = ''
         for task in self.number_of_var.keys():
             path_to_task = os.path.join(self.path, task, 'tasks')
-            self.generate_variants(path_to_task)
+            #self.generate_variants(path_to_task)
             #self.generate_file_solution(path_to_task)
             self.generate_task_description(
                 path_to_task,

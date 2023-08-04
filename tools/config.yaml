@@ -8,18 +8,18 @@ task_descriptions: {
   hack: {},
   turing_machine: {
     var_num: 53,
-    data_path: ./tools/data/I05-2011.txt,
+    data_path: ./tools/data/5.txt,
     template_solution: {
       turing_machine.tu: solution.tu
     }
   },
   turing_diagrams: {
     var_num: 48,
-    data_path: ./tools/data/I06-2011.txt,
+    data_path: ./tools/data/6.txt,
   },
   nam: {
     var_num: 42,
-    data_path: ./tools/data/I07-2011.txt,
+    data_path: ./tools/data/7.txt,
     template_solution: {
       nam.nam: solution.nam
     }
@@ -35,7 +35,7 @@ task_descriptions: {
   },
   finite_state_machine: {
     var_num: 43,
-    data_path: ./tools/data/I11-2011.txt,
+    data_path: ./tools/data/11.txt,
     template_solution: {
       fsm_template.c: FSM.c,
       regex_template.c: regex.c
@@ -43,14 +43,14 @@ task_descriptions: {
   },
   integers: {
     var_num: 33,
-    data_path: ./tools/data/I12-2011.txt,
+    data_path: ./tools/data/12.txt,
     template_solution: {
       integers.c: solution.c
     }
   },
   bitsets: {
     var_num: 29,
-    data_path: ./tools/data/I13-2011.txt,
+    data_path: ./tools/data/13.txt,
     template_solution: {
       bitsets.c: solution.c
     }
@@ -63,7 +63,7 @@ task_descriptions: {
   },
   matrix: {
     var_num: 35,
-    data_path: ./tools/data/I15-2011.txt,
+    data_path: ./tools/data/15.txt,
     template_solution: {
       matrix.c: solution.c
     }

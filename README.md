@@ -1,4 +1,4 @@
-# ZZZ Computer Science Course (3ZCSC)
+# ZZZ Computer Science Course
 
 _You don't have to be an engineer to be a racing driver, but you do have to have Mechanical Sympathy_ – Jackie Stewart, 🏎️ racing driver
 

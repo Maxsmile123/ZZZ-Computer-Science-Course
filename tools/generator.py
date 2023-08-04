@@ -1,14 +1,15 @@
 import os
+import logging
 import shutil
 import yaml
-import logging
+
 from random import shuffle
+from schema import Schema, SchemaError, Optional
 
 from typing import Dict
 from typing import List
 from typing import Optional
 
-from schema import Schema, SchemaError, Optional
 
 TASK_README_TEMPLATE = u'# Вариант № {var}\n'
 u'**Сложность:** {comp}\n'
@@ -54,6 +55,7 @@ class Repository:
         self.students: List[str] = []
         self.fill_()
 
+
     def fill_(self) -> None:
         config = None
         with open(self.config_path, 'r') as file:
@@ -89,7 +91,8 @@ class Repository:
                 logging.warning(f"[?] {path_to_lab} isn't exist for delete")
 
 
-    def load_users(self, filename: str) -> List[str]:
+    @staticmethod
+    def load_users(filename: str) -> List[str]:
         users: List[str] = []
         if filename and os.path.exists(filename):
             logging.info(f'[+] Loading users from {filename}')
@@ -104,7 +107,7 @@ class Repository:
         
         return users
 
-
+    @staticmethod
     def create_file(filepath: str) -> None:
         open(filepath, 'a+').close()
 
@@ -160,7 +163,8 @@ class Repository:
                         logging.warning(f"[?] Copy {t_path} raise exception: {e}")
 
 
-    def var_parser_(self, path_to_var: str) -> Dict[int, List[str]]:
+    @staticmethod
+    def var_parser_(path_to_var: str) -> Dict[int, List[str]]:
         # Dict is: key = num_of_var, value = Tuple (сomplexity, task description)
         lab_description: Dict[int, List[str, str]] = {}
         with open(path_to_var, 'r', encoding='utf-8') as file:
@@ -231,18 +235,18 @@ class Repository:
 
 
     def generate_repository(self) -> None:
-        # self.clear_repository()
-        # self.generate_tasks_struct()
+        self.clear_repository()
+        self.generate_tasks_struct()
         path_to_task: str = ''
         for task in self.number_of_var.keys():
             path_to_task = os.path.join(self.path, task, 'tasks')
             self.generate_variants(path_to_task)
-            # self.generate_file_solution(path_to_task)
-            # self.generate_task_description(
-            #     path_to_task,
-            #     self.var_data_paths[task],
-            #     self.others_descriptions[task]
-            # )
+            self.generate_file_solution(path_to_task)
+            self.generate_task_description(
+                path_to_task,
+                self.var_data_paths[task],
+                self.others_descriptions[task]
+            )
 
 
 if __name__ == '__main__':

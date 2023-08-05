@@ -114,7 +114,7 @@ class Repository:
         if not os.path.exists(self.path_to_tasks):
             os.mkdir(self.path_to_tasks)
 
-        path_to_lab = ''
+        path_to_lab: str = ''
         for lab, num_var in self.number_of_var.items():
             path_to_lab = os.path.join(self.path_to_tasks, lab)
             if not os.path.exists(path_to_lab):
@@ -247,13 +247,13 @@ class Repository:
     # TODO: Make partial generation via config parameters
     def generate_repository(self) -> None:
         #self.clear_repository()
-        #self.generate_tasks_struct()
+        self.generate_tasks_struct()
         path_to_task: str = ''
         for task in self.number_of_var.keys():
             path_to_task = os.path.join(self.path, task, 'tasks')
-            #self.generate_variants(path_to_task)
+            #self.generate_variants(path_to_task) tested
             #self.generate_file_solution(path_to_task)
-            self.generate_task_description(
+            self.generate_task_description( # tested
                 path_to_task,
                 self.var_data_paths[task],
                 self.others_descriptions[task]

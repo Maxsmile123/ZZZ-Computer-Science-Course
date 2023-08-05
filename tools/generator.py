@@ -107,7 +107,8 @@ class Repository:
 
     @staticmethod
     def create_file(filepath: str) -> None:
-        open(filepath, 'a+').close()
+        if filepath and not os.path.exists(filepath):
+            open(filepath, 'a+').close()
 
 
     def generate_tasks_struct(self) -> None:
@@ -128,6 +129,10 @@ class Repository:
                 os.mkdir(path_to_lab_tasks)
 
             for i in range(1, num_var + 1):
+                if os.path.exists(os.path.join(path_to_lab, str(i))):
+                    shutil.rmtree(os.path.join(path_to_lab, str(i)))
+
+
                 path_to_var = os.path.join(path_to_lab_tasks, str(i))
                 if not os.path.exists(path_to_var):
                     logging.info(f'[+] Create dir {path_to_var}')
@@ -248,16 +253,16 @@ class Repository:
     def generate_repository(self) -> None:
         #self.clear_repository()
         self.generate_tasks_struct()
-        path_to_task: str = ''
-        for task in self.number_of_var.keys():
-            path_to_task = os.path.join(self.path, task, 'tasks')
-            #self.generate_variants(path_to_task) tested
-            #self.generate_file_solution(path_to_task)
-            self.generate_task_description( # tested
-                path_to_task,
-                self.var_data_paths[task],
-                self.others_descriptions[task]
-            )
+        # path_to_task: str = ''
+        # for task in self.number_of_var.keys():
+        #     path_to_task = os.path.join(self.path, task, 'tasks')
+        #     #self.generate_variants(path_to_task) tested
+        #     #self.generate_file_solution(path_to_task)
+        #     self.generate_task_description( # tested
+        #         path_to_task,
+        #         self.var_data_paths[task],
+        #         self.others_descriptions[task]
+        #     )
 
 
 if __name__ == '__main__':

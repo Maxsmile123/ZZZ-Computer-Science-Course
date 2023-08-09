@@ -1,3 +1,14 @@
+# Struct for generator params looks like that:
+# enable_generator_func:
+#   - generate_struct
+#   - generate_solution_files
+#   - clear_repository
+#   - generate_task_description
+#   - generate_varinants
+
+# They all turn on by default. 
+# So, if you would like remove
+# one of them - write this function in this
 users_list: ./tools/students
 template_dir: ./tools/templates
 path_to_task: ./tasks

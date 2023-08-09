@@ -1,14 +1,14 @@
 # Задачи
 
 - [`linux`](linux) – утилиты командной строки Linux
-- [`hack`](hack) – взлом удалённого сервера
+- [`hack`](hack) – сетевые уязвимости Linux
 - [`turing machine`](turing_machine) – машина Тьюринга
 - [`turing diagrams`](turing_diagrams) – диаграммы Тьюринга
 - [`nam`](nam) – нормальные алгоритмы Маркова
 - [`reverse`](reverse) – реверс-инжиниринг Си программ
 - [`geometry`](geometry) – определение попадания точки в геометрическую фигуру
 - [`finite state machine`](finite_state_machine) – конечные автоматы
-- [`integers`](integers) – техника работы с целыми числами
+- [`integers`](integers) – целые числа
 - [`bitsets`](bitsets) – битовые множества
 - [`linerization`](linerization) – линеризация матриц
 - [`matrix`](matrix) – обработка матриц

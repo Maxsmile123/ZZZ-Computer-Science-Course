@@ -252,17 +252,17 @@ class Repository:
     # TODO: Make partial generation via config parameters
     def generate_repository(self) -> None:
         #self.clear_repository()
-        self.generate_tasks_struct()
-        # path_to_task: str = ''
-        # for task in self.number_of_var.keys():
-        #     path_to_task = os.path.join(self.path, task, 'tasks')
-        #     #self.generate_variants(path_to_task) tested
-        #     #self.generate_file_solution(path_to_task)
-        #     self.generate_task_description( # tested
-        #         path_to_task,
-        #         self.var_data_paths[task],
-        #         self.others_descriptions[task]
-        #     )
+        #self.generate_tasks_struct()
+        path_to_task: str = ''
+        for task in self.number_of_var.keys():
+            path_to_task = os.path.join(self.path, task, 'tasks')
+            #self.generate_variants(path_to_task) tested
+            #self.generate_file_solution(path_to_task)
+            self.generate_task_description( # tested
+                path_to_task,
+                self.var_data_paths[task],
+                self.others_descriptions[task]
+            )
 
 
 if __name__ == '__main__':

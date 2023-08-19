@@ -1,4 +1,4 @@
-#include <catch>
+#include <catch.hpp>
 
 #include "regex.c"
 

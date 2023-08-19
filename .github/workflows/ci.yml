@@ -1,37 +1,55 @@
-# This starter workflow is for a CMake project running on a single platform. There is a different starter workflow if you need cross-platform coverage.
-# See: https://github.com/actions/starter-workflows/blob/main/ci/cmake-multi-platform.yml
-name: CMake on a single platform
+name: CI
 
 on:
   pull_request:
     branches: [ "main" ]
 
 env:
-  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
-  BUILD_TYPE: Release
 
 jobs:
   build:
-    # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
-    # You can convert this to a matrix build if you need cross-platform coverage.
-    # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 
-    - name: Configure CMake
-      # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
-      # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
-      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_BUILD_TYPE=ASAN
+    - name: Run cmake
+      run: |
+          mkdir build_debug
+          cd build_debug
+          cmake -DCMAKE_BUILD_TYPE=ASAN ..
 
-    - name: Build
-      # Build your program with the given configuration
-      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+     - name: Run clang-tidy
+       run: |
+            [[ -z "${GITHUB_BASE_REF}" ]] && BRANCH_VAR=HEAD~1 || BRANCH_VAR=origin/${GITHUB_BASE_REF}
+            echo "${BRANCH_VAR}"
+            echo "$(git diff --name-only ${BRANCH_VAR})"
+            EXCLUDE_PATTERNS="-e '/tools/' -e 'contrib' "
+            LIST_CHECK_FILES=$(git diff --name-only ${BRANCH_VAR} | grep --color=never '.cpp' | grep -v ${EXCLUDE_PATTERNS} | tr '\n' ' ')
+            if [[ -n ${LIST_CHECK_FILES} ]]
+            then
+              sudo apt install -y clang-tidy-14
+              curl -o tools/run-clang-tidy https://raw.githubusercontent.com/llvm-mirror/clang-tools-extra/release_90/clang-tidy/tool/run-clang-tidy.py
+              python3 ./tools/run-clang-tidy -clang-tidy-binary clang-tidy-14 -p build_debug -q -j$(nproc) ${LIST_CHECK_FILES}
+            else
+              echo "Nothing check in clang-tidy"
+            fi
 
     - name: Test
-      working-directory: ${{github.workspace}}/build
-      # Execute tests defined by the CMake configuration.
-      # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
-      run: ctest -C ${{env.BUILD_TYPE}}
+      run: |
+        LIST_CHECK_FILES=$(git diff --name-only ${BRANCH_VAR} | grep --color=never '.cpp' | grep -v ${EXCLUDE_PATTERNS} | tr '\n' ' ')
+        List_run_test=()
+        cd build_debug
+        for file in LIST_CHECK_FILES
+        do
+          List_run_test+=({$(echo $file | cut -d/ -f2)}{$(echo $file | cut -d/ -f4)})
+        done
+        $List_run_test=(echo "$List_run_test" | tr ' ' '\n' | sort | uniq)
+        for file in $List_run_test
+        do
+          make file
+          ./file
+        done
 

@@ -1,1 +1,1 @@
-add_catch(test_bitset14 test.cpp)
+add_catch(bitsets14 test.cpp)

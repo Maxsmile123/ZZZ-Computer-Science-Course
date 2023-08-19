@@ -1,1 +1,1 @@
-add_catch(test_integers test.cpp)
+add_catch(integers9 test.cpp)

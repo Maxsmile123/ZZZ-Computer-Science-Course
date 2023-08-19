@@ -1,8 +1,8 @@
-#include <catch>
+#include <catch.hpp>
 
-#include "solution.c"
+#include "solution.h"
 
 TEST_CASE("TEST"){
-    REQUIRE(main() == 0);
+    REQUIRE(foo() == 0);
 }
 

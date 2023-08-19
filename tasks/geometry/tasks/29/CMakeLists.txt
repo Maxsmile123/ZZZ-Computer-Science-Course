@@ -1,1 +1,1 @@
-add_catch(test_geometry test.cpp)
+add_catch(geometry29 test.cpp)

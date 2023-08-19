@@ -1,2 +1,2 @@
-add_catch(test_fsm test_fsm.cpp)
-add_catch(test_regex test_regex.cpp)
+add_catch(fsm41 test_fsm.cpp)
+add_catch(regex41 test_regex.cpp)

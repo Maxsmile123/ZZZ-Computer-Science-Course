@@ -1,8 +1,8 @@
 #include <catch.hpp>
 
-#include "regex.c"
+#include "regex.h"
 
 TEST_CASE("TEST"){
-    REQUIRE(main() == 0);
+    REQUIRE(regex() == 0);
 }
 

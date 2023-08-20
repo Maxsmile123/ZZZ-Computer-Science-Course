@@ -8,7 +8,7 @@ if [ "$#" -lt 1 ]; then
 fi
 
 TASK_PATH=../$1
-CLANG_PATH=../run-clang-format.py
+CLANG_PATH=../tools/run-clang-format.py
 CLANG_TIDY=../tools/.clang-tidy
 
 if [ ! -f compile_commands.json ]; then

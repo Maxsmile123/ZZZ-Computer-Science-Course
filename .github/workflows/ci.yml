@@ -1,17 +1,14 @@
-name: CI
+name: C/C++ CI
 
 on:
   pull_request:
 
 jobs:
-  checks:
+  Checks_changing:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
-
     - name: Run cmake
       run: |
           mkdir build_debug

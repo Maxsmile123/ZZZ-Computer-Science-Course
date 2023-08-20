@@ -44,7 +44,7 @@ jobs:
           do
             List_run_test+=({$(echo $file | cut -d/ -f2)}{$(echo $file | cut -d/ -f4)})
           done
-          $List_run_test=(echo "$List_run_test" | tr ' ' '\n' | sort | uniq)
+          $List_run_test=($(echo "$List_run_test" | tr ' ' '\n' | sort | uniq))
           for file in $List_run_test
           do
             make file

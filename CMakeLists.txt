@@ -11,7 +11,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS  ON)
 
 include_directories(contrib/catch)
 
-include(cmake/TestSolution.cmake)
-include(cmake/BuildFlags.cmake)
+include(Cmake/TestSolution.cmake)
+include(Cmake/BuildFlags.cmake)
 
 add_subdirectory(tasks)

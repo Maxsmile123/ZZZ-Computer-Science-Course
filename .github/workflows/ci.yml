@@ -15,8 +15,8 @@ jobs:
           cd build_debug
           cmake -DCMAKE_BUILD_TYPE=ASAN ..
 
-     - name: Run clang-tidy
-       run: |
+    - name: Run clang-tidy
+      run: |
             [[ -z "${GITHUB_BASE_REF}" ]] && BRANCH_VAR=HEAD~1 || BRANCH_VAR=origin/${GITHUB_BASE_REF}
             echo "${BRANCH_VAR}"
             echo "$(git diff --name-only ${BRANCH_VAR})"
@@ -31,8 +31,8 @@ jobs:
               echo "Nothing check in clang-tidy"
             fi
 
-      - name: Test
-        run: |
+    - name: Test
+      run: |
           LIST_CHECK_FILES=$(git diff --name-only ${BRANCH_VAR} | grep --color=never '.cpp' | grep -v ${EXCLUDE_PATTERNS} | tr '\n' ' ')
           List_run_test=()
           cd build_debug

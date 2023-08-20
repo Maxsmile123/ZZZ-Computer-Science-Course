@@ -27,7 +27,7 @@ jobs:
             then
               sudo apt install -y clang-tidy
               echo "Running..."
-              python3 ./tools/run-clang-tidy.py -p -q build_debug -j$(nproc) ${LIST_CHECK_FILES}
+              python3 ./tools/run-clang-tidy.py -p build_debug -quiet -j$(nproc) ${LIST_CHECK_FILES}
             else
               echo "Nothing check in clang-tidy"
             fi

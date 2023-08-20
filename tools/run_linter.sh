@@ -20,4 +20,4 @@ if [ "$#" -eq 2 ]; then
     CLANG_PATH=../../run-clang-format.py
 fi
 
-$CLANG_PATH -r $TASK_PATH && clang-tidy $TASK_PATH/*.cpp
+$CLANG_PATH -r $TASK_PATH

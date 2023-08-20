@@ -18,6 +18,7 @@ jobs:
     - name: Run clang-format && clang-tidy
       run: |
             chmod +x ./tools/run_linter.sh
+            chmod +x ./tools/run-clang-format.py
             git fetch origin main:refs/remotes/origin/main
             [[ -z "${GITHUB_BASE_REF}" ]] && BRANCH_VAR=HEAD~1 || BRANCH_VAR=origin/main
             EXCLUDE_PATTERNS="-e '/tools/' -e 'contrib' "

@@ -9,6 +9,7 @@ fi
 
 TASK_PATH=../$1
 CLANG_PATH=../run-clang-format.py
+CLANG_TIDY=../tools/.clang-tidy
 
 if [ ! -f compile_commands.json ]; then
     echo "Run this script from the build directory"
@@ -20,4 +21,4 @@ if [ "$#" -eq 2 ]; then
     CLANG_PATH=../../run-clang-format.py
 fi
 
-$CLANG_PATH -r $TASK_PATH && clang-tidy $TASK_PATH/*.h
+$CLANG_PATH -r $TASK_PATH && clang-tidy --format-style=$CLANG_TIDY $TASK_PATH/*.h

@@ -1,5 +1,5 @@
 ---
-Checks:          '-*,cppcoreguidelines-avoid-goto,cppcoreguidelines-pro-type-const-cast, google-readability-casting, google-runtime-int, modernize-replace-random-shuffle, modernize-use-nullptr, readability-braces-around-statements, readability-container-size-empty, readability-redundant-control-flow, readability-redundant-string-init, readability-identifier-naming, google-build-using-namespace'
+Checks:          '-*,bugprone-too-small-loop-variable, bugprone-use-after-move, cppcoreguidelines-avoid-goto, cppcoreguidelines-avoid-non-const-global-variables, cppcoreguidelines-init-variables, cppcoreguidelines-narrowing-conversions, cppcoreguidelines-pro-type-const-cast, google-build-using-namespace, google-explicit-constructor, google-readability-casting, google-runtime-int, modernize-replace-random-shuffle, modernize-use-bool-literals, modernize-use-override, modernize-use-using, performance-for-range-copy, readability-braces-around-statements, readability-container-size-empty, readability-duplicate-include, readability-identifier-naming, readability-isolate-declaration, readability-magic-numbers, readability-make-member-function-const, readability-redundant-control-flow, readability-redundant-string-init'
 HeaderFilterRegex: '\.h$'
 WarningsAsErrors: '*'
 CheckOptions:
@@ -23,19 +23,11 @@ CheckOptions:
     value: lower_case
   - key: readability-identifier-naming.ParameterCase
     value: lower_case
-  - key: readability-identifier-naming.GlobalConstantPrefix
-    value: k
   - key: readability-identifier-naming.GlobalConstantCase
-    value: CamelCase
-  - key: readability-identifier-naming.StaticConstantPrefix
-    value: k
+    value: UPPER_CASE
   - key: readability-identifier-naming.StaticConstantCase
-    value: CamelCase
+    value: UPPER_CASE
   - key: readability-identifier-naming.ConstexprVariableCase
     value: CamelCase
-  - key: readability-identifier-naming.ConstexprVariablePrefix
-    value: k
   - key: google-runtime-int.TypeSuffix
     value: _t
-  - key: readability-identifier-naming.TypeTemplateParameterCase
-    value: CamelCase

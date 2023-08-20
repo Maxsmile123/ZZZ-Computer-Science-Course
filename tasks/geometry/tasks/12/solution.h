@@ -8,7 +8,7 @@ typedef struct point_{
 } Point;
 
 int check_zone(Point p){
-    // Write a code here that checks whether a point belongs to a given area
+    // Write a code here that checks whether a point belongs to a given area/
 }
 
 int foo(){

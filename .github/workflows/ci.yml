@@ -27,6 +27,7 @@ jobs:
             then
               sudo apt install -y clang-tidy-14
               curl -o tools/run-clang-tidy https://raw.githubusercontent.com/llvm-mirror/clang-tools-extra/release_90/clang-tidy/tool/run-clang-tidy.py
+              echo "Running..."
               python3 ./tools/run-clang-tidy -clang-tidy-binary clang-tidy-14 -p build_debug -q -j$(nproc) ${LIST_CHECK_FILES}
             else
               echo "Nothing check in clang-tidy"
@@ -44,7 +45,7 @@ jobs:
           do
             List_run_test+=({$(echo $file | cut -d/ -f2)}{$(echo $file | cut -d/ -f4)})
           done
-          $List_run_test=($(echo "$List_run_test" | tr ' ' '\n' | sort | uniq))
+          $List_run_test=($(echo $List_run_test | tr ' ' '\n' | sort | uniq))
           for file in $List_run_test
           do
             make file

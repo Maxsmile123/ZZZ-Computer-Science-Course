@@ -8,5 +8,5 @@ typedef enum states_{
 
 
 int fsm(){
-    // write your solution here
+    // write your solution here.
 }

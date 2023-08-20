@@ -1,10 +1,10 @@
 name: C/C++ CI
 
 on:
-  pull_request:
+  pull_request: 
 
 jobs:
-  Checks_changing:
+  check:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,19 +31,19 @@ jobs:
               echo "Nothing check in clang-tidy"
             fi
 
-    - name: Test
-      run: |
-        LIST_CHECK_FILES=$(git diff --name-only ${BRANCH_VAR} | grep --color=never '.cpp' | grep -v ${EXCLUDE_PATTERNS} | tr '\n' ' ')
-        List_run_test=()
-        cd build_debug
-        for file in LIST_CHECK_FILES
-        do
-          List_run_test+=({$(echo $file | cut -d/ -f2)}{$(echo $file | cut -d/ -f4)})
-        done
-        $List_run_test=(echo "$List_run_test" | tr ' ' '\n' | sort | uniq)
-        for file in $List_run_test
-        do
-          make file
-          ./file
-        done
+      - name: Test
+        run: |
+          LIST_CHECK_FILES=$(git diff --name-only ${BRANCH_VAR} | grep --color=never '.cpp' | grep -v ${EXCLUDE_PATTERNS} | tr '\n' ' ')
+          List_run_test=()
+          cd build_debug
+          for file in LIST_CHECK_FILES
+          do
+            List_run_test+=({$(echo $file | cut -d/ -f2)}{$(echo $file | cut -d/ -f4)})
+          done
+          $List_run_test=(echo "$List_run_test" | tr ' ' '\n' | sort | uniq)
+          for file in $List_run_test
+          do
+            make file
+            ./file
+          done
 

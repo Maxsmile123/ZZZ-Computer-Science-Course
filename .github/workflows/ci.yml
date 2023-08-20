@@ -17,11 +17,12 @@ jobs:
 
     - name: Run clang-tidy
       run: |
-            [[ -z "${GITHUB_BASE_REF}" ]] && BRANCH_VAR=HEAD~1 || BRANCH_VAR=origin/${GITHUB_BASE_REF}
+            git fetch origin main:refs/remotes/origin/main
+            [[ -z "${GITHUB_BASE_REF}" ]] && BRANCH_VAR=HEAD~1 || BRANCH_VAR=origin/main
             echo "${BRANCH_VAR}"
             echo "$(git diff --name-only ${BRANCH_VAR})"
             EXCLUDE_PATTERNS="-e '/tools/' -e 'contrib' "
-            LIST_CHECK_FILES=$(git diff --name-only ${BRANCH_VAR} | grep --color=never '.cpp' | grep -v ${EXCLUDE_PATTERNS} | tr '\n' ' ')
+            LIST_CHECK_FILES=$(git diff --name-only ${BRANCH_VAR} | grep --color=never '.cpp|.h|.hpp' | grep -v ${EXCLUDE_PATTERNS} | tr '\n' ' ')
             if [[ -n ${LIST_CHECK_FILES} ]]
             then
               sudo apt install -y clang-tidy-14
@@ -33,6 +34,9 @@ jobs:
 
     - name: Test
       run: |
+          git fetch origin main:refs/remotes/origin/main
+          EXCLUDE_PATTERNS="-e '/tools/' -e 'contrib' "
+          [[ -z "${GITHUB_BASE_REF}" ]] && BRANCH_VAR=HEAD~1 || BRANCH_VAR=origin/main
           LIST_CHECK_FILES=$(git diff --name-only ${BRANCH_VAR} | grep --color=never '.cpp' | grep -v ${EXCLUDE_PATTERNS} | tr '\n' ' ')
           List_run_test=()
           cd build_debug

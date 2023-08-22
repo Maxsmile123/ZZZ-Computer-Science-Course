@@ -49,7 +49,7 @@ task_descriptions: {
     var_num: 43,
     data_path: ./tools/data/11.txt,
     template_solution: {
-      fsm.h: FSM.h,
+      fsm.h: fsm.h,
       reg.h: reg.h,
       fsm.cpp: test_fsm.cpp,
       reg.cpp: test_reg.cpp

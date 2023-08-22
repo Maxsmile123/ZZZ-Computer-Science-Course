@@ -5,7 +5,7 @@
 
 typedef int32_t** Matrix;
 
-int task(){
+int task() {
   // write your solution here
   return 0;
 }

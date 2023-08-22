@@ -2,5 +2,5 @@
 
 #include "solution.h"
 
-TEST_CASE("TEST"){ REQUIRE(task() == 0); }
+TEST_CASE("TEST") { REQUIRE(task() == 0); }
 

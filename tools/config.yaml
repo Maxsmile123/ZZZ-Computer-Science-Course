@@ -41,54 +41,63 @@ task_descriptions: {
   geometry: {
     var_num: 30,
     template_solution: {
-      geometry.c: solution.c
+      geometry.h: solution.h,
+      test_solution.cpp: test.cpp
     }
   },
   finite_state_machine: {
     var_num: 43,
     data_path: ./tools/data/11.txt,
     template_solution: {
-      fsm_template.c: FSM.c,
-      regex_template.c: regex.c
+      fsm.h: FSM.h,
+      reg.h: reg.h,
+      fsm.cpp: test_fsm.cpp,
+      reg.cpp: test_reg.cpp
     }
   },
   integers: {
     var_num: 33,
     data_path: ./tools/data/12.txt,
     template_solution: {
-      integers.c: solution.c
+      integers.h: solution.h,
+      test_solution.cpp: test.cpp
     }
   },
   bitsets: {
     var_num: 29,
     data_path: ./tools/data/13.txt,
     template_solution: {
-      bitsets.c: solution.c
+      bitsets.h: solution.h,
+      test_solution.cpp: test.cpp
     }
   },
   linerization: {
     var_num: 28,
     template_solution: {
-      linerization.c: solution.c
+      linerization.h: solution.h,
+      test_solution.cpp: test.cpp
     }
   },
   matrix: {
     var_num: 35,
     data_path: ./tools/data/15.txt,
     template_solution: {
-      matrix.c: solution.c
+      matrix.h: solution.h,
+      test_solution.cpp: test.cpp
     }
   },
   taylor: {
     var_num: 28,
     template_solution: {
-      taylor.c: solution.c
+      taylor.h: solution.h,
+      test_solution.cpp: test.cpp
     }
   },
   numerical_methods: {
     var_num: 28,
     template_solution: {
-      numerical_methods.c: solution.c
+      numerical_methods.h: solution.h,
+      test_solution.cpp: test.cpp
     }
   },
 }

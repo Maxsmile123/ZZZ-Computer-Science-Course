@@ -1,5 +1,6 @@
-import os
+import argparse
 import logging
+import os
 import shutil
 import schema
 import yaml
@@ -51,10 +52,10 @@ class Repository:
         self.others_descriptions: Dict[str, str] = {}
         self.config_path = config_path
         self.students: List[str] = []
-        self.fill_()
+        self.load_config_()
 
 
-    def fill_(self) -> None:
+    def load_config_(self) -> None:
         config = None
         with open(self.config_path, 'r') as file:
             config = yaml.safe_load(file)
@@ -91,6 +92,9 @@ class Repository:
 
     @staticmethod
     def load_users(filename: Optional[str]) -> List[str]:
+        '''
+        One student per row in file
+        '''
         users: List[str] = []
         if filename and os.path.exists(filename):
             logging.info(f'[+] Loading users from {filename}')
@@ -129,15 +133,13 @@ class Repository:
                 os.mkdir(path_to_lab_tasks)
 
             for i in range(1, num_var + 1):
-                if os.path.exists(os.path.join(path_to_lab, str(i))):
-                    shutil.rmtree(os.path.join(path_to_lab, str(i)))
-
-
                 path_to_var = os.path.join(path_to_lab_tasks, str(i))
                 if not os.path.exists(path_to_var):
                     logging.info(f'[+] Create dir {path_to_var}')
                     os.mkdir(path_to_var)
-                self.create_file(os.path.join(path_to_var, 'readme.md'))
+                    self.create_file(os.path.join(path_to_var, 'readme.md'))
+                else:
+                    logging.warning(f'[-] Already exists {path_to_var}')
 
 
     def generate_file_solution(
@@ -250,21 +252,53 @@ class Repository:
                 ))
 
     # TODO: Make partial generation via config parameters
-    def generate_repository(self) -> None:
-        #self.clear_repository()
-        #self.generate_tasks_struct()
+    def generate_repository(self, args) -> None:
+        if args.clean:
+            self.clear_repository()
+        if args.struct:
+            self.generate_tasks_struct()
         path_to_task: str = ''
         for task in self.number_of_var.keys():
             path_to_task = os.path.join(self.path, task, 'tasks')
-            #self.generate_variants(path_to_task) tested
-            #self.generate_file_solution(path_to_task)
-            self.generate_task_description( # tested
-                path_to_task,
-                self.var_data_paths[task],
-                self.others_descriptions[task]
-            )
+            if args.vars:
+                self.generate_variants(path_to_task)
+            if args.files:
+                self.generate_file_solution(path_to_task)
+            if args.description:
+                self.generate_task_description(
+                    path_to_task,
+                    self.var_data_paths[task],
+                    self.others_descriptions[task]
+                )
+
+def main():
+    parser = argparse.ArgumentParser(description='default all targets is off')
+    parser.add_argument(
+        '-c',
+        '--clean',
+        action='store_true',
+        help='Clean current repository before generation')
+    parser.add_argument(
+        '--struct',
+        action='store_true',
+        help='Generate repository struct')
+    parser.add_argument(
+        '--files',
+        action='store_true',
+        help='Generate files with solutions and tests. Need full tempaltes directory')
+    parser.add_argument(
+        '--vars',
+        action='store_true',
+        help='Generate variants for students')
+    parser.add_argument(
+        '--description',
+        action='store_true',
+        help='Generate description for vars. Need full data directory. "-" is seperator')
+
+    args = parser.parse_args()
+    repo = Repository('tasks', './tools/config.yaml')
+    repo.generate_repository(args)
 
 
 if __name__ == '__main__':
-    repo = Repository('tasks', './tools/config.yaml')
-    repo.generate_repository()
+    main()

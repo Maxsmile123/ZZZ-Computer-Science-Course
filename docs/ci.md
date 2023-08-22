@@ -15,7 +15,7 @@ git clone https://github.com/YourGitHubLogin/ZZZ-Computer-Science-Course.git
 ```shell
 mkdir build
 cd build
-cmake -DCMAKE_BUILD_TYPE=ASAN ..
+cmake ..
 ```
 Процесс может занять продолжительное время, наберитесь терпения.
 

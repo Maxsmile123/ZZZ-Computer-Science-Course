@@ -1,11 +1,16 @@
 #pragma once
 
+#include <float.h>
+#include <stdint.h>
 #include <stdio.h>
 
+
 long double func(long double x){
-    // write your function here
+  // write your function here
+  return 0.0;
 }
 
-int foo(){
-    // write your solution here
+int task(){
+  // write your solution here
+  return 0;
 }

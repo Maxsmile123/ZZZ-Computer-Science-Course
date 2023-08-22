@@ -1,8 +1,6 @@
 #include <catch.hpp>
 
-#include "FSM.h"
+#include "fsm.h"
 
-TEST_CASE("TEST"){
-    REQUIRE(fsm() == 0);
-}
+TEST_CASE("TEST"){ REQUIRE(task() == 0); }
 

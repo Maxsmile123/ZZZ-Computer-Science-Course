@@ -148,7 +148,7 @@ class Repository:
     ) -> None:
         lab = os.path.basename(os.path.dirname(path_to_tasks))
         for var in range(1, self.number_of_var[lab] + 1):
-            for template_filename, solution_filename in self.copy_files.values():
+            for template_filename, solution_filename in self.copy_files[lab].items():
                     t_path = os.path.join(self.template_dir, template_filename)
                     s_path = os.path.join(
                         path_to_tasks,

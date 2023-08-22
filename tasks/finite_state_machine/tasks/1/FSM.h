@@ -7,6 +7,6 @@ typedef enum states {
 } State;
 
 int task() {
-  // write your solution here
+  // write your solution here.
   return 0;
 }

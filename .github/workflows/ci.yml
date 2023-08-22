@@ -52,7 +52,7 @@ jobs:
           for file in $LIST_CHECK_FILES
           do
             List_run_test+=($(echo $file | cut -d/ -f2)$(echo $file | cut -d/ -f4))
-            if [ $(echo $file | cut -d/ -f2) = "finite_state_machine" ]
+            if [ "$(echo $file | cut -d/ -f2)" = "finite_state_machine" ];
             then
               List_run_test+=(regex$(echo $file | cut -d/ -f4))
             fi

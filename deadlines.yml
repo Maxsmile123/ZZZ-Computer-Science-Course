@@ -16,7 +16,7 @@
 - task:    nam
   start:    week1
   deadline: start + 3 week
-  score: 100
+  score: 150
 
 - task:    geometry
   start:    week2

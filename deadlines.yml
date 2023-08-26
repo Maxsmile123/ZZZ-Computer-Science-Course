@@ -58,12 +58,7 @@
   deadline: start + 2 week
   score: 150
 
-- task:    reverse
+- task:    latex
   start:    week9
-  deadline: start + 4 week
-  score: 350
-
-- task:    hack
-  start:    week12
-  deadline: start + 4 week
-  score: 350
+  deadline: start + 2 week
+  score: 50

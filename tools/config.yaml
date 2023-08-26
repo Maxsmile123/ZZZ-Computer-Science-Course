@@ -16,7 +16,7 @@ task_descriptions: {
   linux: {
     var_num: 5,
   },
-  hack: {},
+  latex: {},
   turing_machine: {
     var_num: 53,
     data_path: ./tools/data/5.txt,
@@ -34,9 +34,6 @@ task_descriptions: {
     template_solution: {
       nam.nam: solution.nam
     }
-  },
-  reverse: {
-    var_num: 27,
   },
   geometry: {
     var_num: 30,

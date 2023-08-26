@@ -23,6 +23,7 @@ jobs:
             [[ -z "${GITHUB_BASE_REF}" ]] && BRANCH_VAR=HEAD~1 || BRANCH_VAR=origin/main
             EXCLUDE_PATTERNS="-e 'tools' -e 'contrib' -e 'workflow' "
             LIST_CHECK_FILES=$(git diff --name-only ${BRANCH_VAR} | grep '.cpp\|.h\|.hpp' | grep -v ${EXCLUDE_PATTERNS} | tr '\n' ' ')
+            echo ${LIST_CHECK_FILES[@]}
             List_run_test=()
             cd build_debug
             for file in ${LIST_CHECK_FILES[@]}
@@ -30,7 +31,7 @@ jobs:
               List_run_test+=(tasks/$(echo $file | cut -d/ -f2)/tasks/$(echo $file | cut -d/ -f4))
             done
             List_run_test=$(echo $List_run_test | tr ' ' '\n' | sort | uniq)
-            echo "${List_run_test[@]}"
+            echo "Run for ${List_run_test[@]}"
             if [[ -n ${List_run_test} ]]
             then
               for file in ${List_run_test[@]}

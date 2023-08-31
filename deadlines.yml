@@ -5,17 +5,17 @@
 
 - task:    turing machine
   start:    week1
-  deadline: start + 3 week
+  deadline: start + 4 week
   score: 200
 
 - task:    turing diagrams
   start:    week1
-  deadline: start + 3 week
+  deadline: start + 4 week
   score: 150
 
 - task:    nam
   start:    week1
-  deadline: start + 3 week
+  deadline: start + 4 week
   score: 150
 
 - task:    geometry
@@ -34,7 +34,7 @@
   score: 200
 
 - task:    numerical methods
-  start:    week4
+  start:    week5
   deadline: start + 3 week
   score: 200
 

@@ -31,12 +31,12 @@ _You don't have to be an engineer to be a racing driver, but you do have to have
 
 - [Задачи](/tasks)
 - [Дедлайны](deadlines.yml)
-- [Результаты]()
+- [Результаты](https://docs.google.com/spreadsheets/d/1yccfoVxhaWXttervO4JiWKCkNkmRVIkzLVE6WAn0TGg/edit?usp=sharing)
 
 ## Ссылки
 
 - [Канал для группы М8О-107Б-23](https://t.me/+11n4szv5QHxmODQy) - здесь вся информация о занятиях.
-- [Чат для единомышленников](https://t.me/+krYV_CkkgRhjOWYy) - это чат для вопросов, общения и флуда.
+- [Общительный чат](https://t.me/+krYV_CkkgRhjOWYy) - это чат для вопросов, общения и флуда.
 
 
 

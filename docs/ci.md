@@ -22,6 +22,7 @@ git clone https://github.com/YourGitHubLogin/ZZZ-Computer-Science-Course.git
 git remote add upstream https://github.com/Maxsmile123/ZZZ-Computer-Science-Course
 ```
 4. Сборка проекта   
+
 Перейдите в скачанный репозиторий и создайте папку `build` в корне репозитория, после чего соберите проект:
 ```shell
 mkdir build

@@ -1,0 +1,1 @@
+add_catch(geometry23 test.cpp)

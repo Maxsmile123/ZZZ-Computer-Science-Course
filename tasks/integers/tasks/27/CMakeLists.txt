@@ -1,0 +1,1 @@
+add_catch(integers27 test.cpp)

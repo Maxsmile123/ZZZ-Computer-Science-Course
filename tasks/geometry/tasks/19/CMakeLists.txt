@@ -1,0 +1,1 @@
+add_catch(geometry19 test.cpp)

@@ -1,0 +1,1 @@
+add_catch(integers8 test.cpp)

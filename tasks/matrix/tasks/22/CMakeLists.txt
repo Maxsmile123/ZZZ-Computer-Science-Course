@@ -1,0 +1,1 @@
+add_catch(matrix22 test.cpp)

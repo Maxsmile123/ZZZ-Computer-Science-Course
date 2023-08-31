@@ -1,0 +1,1 @@
+add_catch(integers18 test.cpp)

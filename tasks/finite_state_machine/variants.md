@@ -1,0 +1,29 @@
+| **Студент** | **Вариант**|
+|-------------|------------|
+| student1 | [27](./tasks/27) |
+| student2 | [4](./tasks/4) |
+| student3 | [12](./tasks/12) |
+| student4 | [41](./tasks/41) |
+| student5 | [17](./tasks/17) |
+| student6 | [13](./tasks/13) |
+| student7 | [28](./tasks/28) |
+| student8 | [23](./tasks/23) |
+| student9 | [9](./tasks/9) |
+| student10 | [24](./tasks/24) |
+| student11 | [21](./tasks/21) |
+| student12 | [19](./tasks/19) |
+| student13 | [14](./tasks/14) |
+| student14 | [15](./tasks/15) |
+| student15 | [37](./tasks/37) |
+| student16 | [15](./tasks/15) |
+| student17 | [11](./tasks/11) |
+| student18 | [38](./tasks/38) |
+| student19 | [2](./tasks/2) |
+| student20 | [5](./tasks/5) |
+| student21 | [14](./tasks/14) |
+| student22 | [6](./tasks/6) |
+| student23 | [7](./tasks/7) |
+| student24 | [5](./tasks/5) |
+| student25 | [3](./tasks/3) |
+| student26 | [10](./tasks/10) |
+| student27 | [16](./tasks/16) |

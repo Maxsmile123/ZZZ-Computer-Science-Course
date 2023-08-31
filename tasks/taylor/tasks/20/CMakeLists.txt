@@ -1,0 +1,1 @@
+add_catch(taylor20 test.cpp)

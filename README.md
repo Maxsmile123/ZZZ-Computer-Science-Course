@@ -35,8 +35,8 @@ _You don't have to be an engineer to be a racing driver, but you do have to have
 
 ## Ссылки
 
-- [Канал для группы М8О-107Б-23](https://t.me/+11n4szv5QHxmODQy) - здесь вся информация о занятиях.
-- [Общительный чат](https://t.me/+krYV_CkkgRhjOWYy) - это чат для вопросов, общения и флуда.
+- [Канал для М8О-107Б-23](https://t.me/+11n4szv5QHxmODQy) - здесь вся информация о занятиях.
+- [Чат](https://t.me/+krYV_CkkgRhjOWYy) - для вопросов, общения и флуда.
 
 
 

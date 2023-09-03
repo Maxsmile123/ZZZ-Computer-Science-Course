@@ -1,6 +1,5 @@
-users_list: ./tools/students
+users_list: ./tools/students.txt
 template_dir: ./tools/templates
-path_to_task: ./tasks
 task_descriptions: {
   linux: {
     var_num: 5,

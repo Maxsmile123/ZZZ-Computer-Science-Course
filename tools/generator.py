@@ -20,7 +20,6 @@ DEFAULT_USERS_NUM = 28
 CONFIG_SCHEMA = Schema({
     schema.Optional('users_list'): str,
     'template_dir': str,
-    'path_to_task': str,
     schema.Optional('task_descriptions'): {
         str : {
             schema.Optional('var_num'): int,
@@ -45,7 +44,6 @@ class Repository:
         ) -> None:
         self.path = path
         self.template_dir: Optional[str] = None
-        self.path_to_tasks: Optional[str] = None
         self.copy_files: Dict[str, Dict[str, str]] = {}
         self.number_of_var: Dict[str, int] = {}
         self.var_data_paths: Dict[str, Optional[str]] = {}
@@ -62,7 +60,6 @@ class Repository:
         self.validate_config(config)
 
         self.template_dir = config['template_dir']
-        self.path_to_tasks = config['path_to_task']
         self.students = self.load_users(config.get('users_list'))
         for task, description in config.get('task_descriptions', {}).items():
             self.number_of_var[task] = description.get('var_num', 1)
@@ -78,7 +75,6 @@ class Repository:
         except SchemaError as e:
             logging.error("[-] Config isn't valid!")
             raise e
-
 
     def clear_repository(self) -> None:
         path_to_lab = '' 
@@ -99,14 +95,15 @@ class Repository:
         if filename and os.path.exists(filename):
             logging.info(f'[+] Loading users from {filename}')
             with open(filename, 'r', encoding='utf-8') as file:
-                users.append(file.readline())
+                for user in file:
+                    users.append(user.rstrip())
         else:
             logging.warning('[?] Unable load users from '
                             f'{filename if filename else "file"}\n'
                             'Generate default users.') 
             for i in range(1, DEFAULT_USERS_NUM):
                 users.append(f'student{i}')
-        
+
         return users
 
     @staticmethod
@@ -116,12 +113,12 @@ class Repository:
 
 
     def generate_tasks_struct(self) -> None:
-        if not os.path.exists(self.path_to_tasks):
-            os.mkdir(self.path_to_tasks)
+        if not os.path.exists(self.path):
+            os.mkdir(self.path)
 
         path_to_lab: str = ''
         for lab, num_var in self.number_of_var.items():
-            path_to_lab = os.path.join(self.path_to_tasks, lab)
+            path_to_lab = os.path.join(self.path, lab)
             if not os.path.exists(path_to_lab):
                 logging.info(f'[+] Create dir {path_to_lab}')
                 os.mkdir(path_to_lab)
@@ -251,7 +248,7 @@ class Repository:
                     var=variants[i]
                 ))
 
-    # TODO: Make partial generation via config parameters
+
     def generate_repository(self, args) -> None:
         if args.clean:
             self.clear_repository()

@@ -1,0 +1,1 @@
+add_catch(linerization27 test.cpp)

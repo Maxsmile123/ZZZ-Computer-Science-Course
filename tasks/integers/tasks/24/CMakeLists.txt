@@ -1,0 +1,1 @@
+add_catch(integers24 test.cpp)

@@ -1,0 +1,1 @@
+add_catch(integers21 test.cpp)

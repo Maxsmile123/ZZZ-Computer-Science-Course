@@ -1,0 +1,1 @@
+add_catch(integers15 test.cpp)

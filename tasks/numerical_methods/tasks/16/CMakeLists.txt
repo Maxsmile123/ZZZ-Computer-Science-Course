@@ -1,0 +1,1 @@
+add_catch(numerical_methods16 test.cpp)

@@ -1,0 +1,1 @@
+add_catch(matrix12 test.cpp)

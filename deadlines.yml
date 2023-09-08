@@ -48,17 +48,17 @@
   deadline: start + 3 week
   score: 150
 
-- task:    finite state machine
-  start:    week7
-  deadline:  start + 4 week
-  score: 350
-
 - task:    bitsets
   start:    week8
   deadline: start + 2 week
   score: 150
 
-- task:    latex
+- task:    finite state machine
   start:    week9
+  deadline:  start + 4 week
+  score: 350
+
+- task:    latex
+  start:    week10
   deadline: start + 2 week
   score: 50

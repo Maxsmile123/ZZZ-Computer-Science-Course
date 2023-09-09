@@ -41,7 +41,7 @@
 - task:    linerization
   start:    week6
   deadline: start + 3 week
-  score: 200
+  score: 250
 
 - task:    matrix
   start:    week6

@@ -6,6 +6,6 @@
 typedef uint32_t Bitset;
 
 int Task() {
-    // write your solution
     return 0;
+    // write your solution
 }

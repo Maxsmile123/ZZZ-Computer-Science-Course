@@ -20,7 +20,6 @@ _Linux is not just an operating system, it is a way of life, a philosophy, a way
 
 Однако начать нужно с структуры файловой системы. 
 
-- [Прочтите](https://losst.pro/tipy-fajlov-v-linux) про файлы в Linux.
 - [Прочтите](https://losst.pro/ctruktura-fajlovoj-sistemy-linux) про системные папки в Linux.
 
 ## Утилиты

@@ -14,6 +14,8 @@ fork в верхней части проекта.
 Прописать в терминале с установленным git:
 ```shell
 git clone https://github.com/YourGitHubLogin/ZZZ-Computer-Science-Course.git
+
+cd ZZZ-Computer-Science-Course
 ```
 Где вместо `YourGitHubLogin` ваш логин на GitHub.   
 
@@ -96,13 +98,37 @@ git checkout -b NameOfBranch
 ```
 **ВАЖНО**  
 Создавайте ветку исключительно от своей главной ветки! Иначе в PR могут добавиться файлы других задач! Перед созданием ветки пропишите эти команды:
-```
+```shell
 git checkout main
 git fetch upstream
 git merge upstream/main
 git push origin main
 ```
 ### 2. Вносим изменения в код и делаем коммиты изменений
+```shell
+git add path // добавить файлы на Stage. Тут path - путь к директории/файлу, которые нужно добавить
+
+git commit -m "lol" // Создать коммит на основе файлов в Stage. Commit message может быть любым
+```
+Чтобы узнать текущий статус изменений, пропишите:
+```shell
+git status
+```
+Чтобы посмотреть все коммиты текущей ветки, пропишите:
+```shell
+git log
+```
+Чтобы переключиться на другой коммит, пропишите:
+```shell
+git checkout commit_hash // Где commit_hash - это хэш коммита, на который хотите переключиться
+```
+
+Чтобы откатиться к предыдущей версии, пропишите:
+```shell
+git reset commit_hash // Все изменения от commit_hash до текущего будут лежать на Stage.
+
+git reset --hard commit_hash // Все изменения от commit_hash до текущего безвозвратно удаляются.
+```
 
 ### 3. Выполняем push на ваш удалённый репозиторий
 Все ваши коммиты отправляем на удалённый репозиторий командой git push:

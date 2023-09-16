@@ -1,1 +1,1 @@
-# Изменить расширение всех txt файлов в формат md
+find *.txt | xargs basename -s .txt | xargs -i mv {}.txt {}.md

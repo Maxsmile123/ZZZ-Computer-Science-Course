@@ -1,2 +1,2 @@
 #Найти все исполняемые файлы
-find -executable -type f
+find -executable -type f 

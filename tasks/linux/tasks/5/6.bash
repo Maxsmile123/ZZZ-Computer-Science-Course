@@ -1,2 +1,2 @@
 #Запретите выполнение файла virus.py для всех пользователей
-chmod -111 virus.py 
+chmod -111 virus.py

@@ -1,2 +1,2 @@
 #Найти все файлы, начинающиеся с 'a', кроме файлов с расширением php
-find -name "a*" -type f -not -name "*.php"
+find -name "a*" -type f -not -name "*.php" 

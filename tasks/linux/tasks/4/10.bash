@@ -1,3 +1,3 @@
 # Выведи мне топ 5 файлов, в которых чаще всего встречается слово pizza
-grep -r -w -o 'pizza' . | sort -nr | head -5
+grep -c -w -r pizza * . | sort -n -r | head -5
 

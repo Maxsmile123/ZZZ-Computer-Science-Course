@@ -1,3 +1,4 @@
 
 №3   grep -v '^$' NotEmpty.txt | cat
 №6   grep -n +7 numbers.txt  
+№7   grep -rl lol | sort | sort -nr | head -5

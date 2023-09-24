@@ -1,4 +1,4 @@
-
+grep -v '^$' NotEmpty.txt | cat
 
 str
 

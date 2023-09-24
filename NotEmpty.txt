@@ -1,4 +1,4 @@
-grep -v '^$' NotEmpty.txt | cat
+решение находится в текстовой файле answers.txt
 
 str
 

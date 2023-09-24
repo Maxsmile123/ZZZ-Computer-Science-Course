@@ -1,0 +1,3 @@
+
+№3   grep -v '^$' NotEmpty.txt | cat
+№6   grep -n +7 numbers.txt  

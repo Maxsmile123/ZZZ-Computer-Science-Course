@@ -3,4 +3,5 @@
 №6   grep -n +7 numbers.txt
 №7   grep -rl lol | sort -nr | head -5
 №8   grep -rwe ass -rwe shit -rwe fuck
-
+№9   find . -type f -size +1M -size -10M -exec ls -sh {} + | sort -hr | head -n 5
+№10  grep -rwE "Trojan|Process|Backdoor"

@@ -2,3 +2,4 @@
 # Trojan
 # Process
 # Backdoor
+grep -rwE "Trojan|Process|Backdoor"

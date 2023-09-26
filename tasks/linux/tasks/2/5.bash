@@ -1,2 +1,3 @@
 #z Выведите топ 7 самых тяжёлых файлов в диапазоне от 1 до 100
-find . -type f -size +1M -size -100M -exec ls -S {} \; | head -n 7
+find . -type f -size +1M -size -100M -exec ls -S {} \; | head -n 7  (неправильно, т. к. -S у ls не сортирует, а выводит в таком же порядке, как и без -S)
+find . -type f -size +1M -size -100M -exec ls -l {} \; | sort -k 5 -nr | head -n 7 (делает то что нужно)

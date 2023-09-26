@@ -1,2 +1,2 @@
 # Найти номера строк, на которых находится слово def
-grep -n def 8task.txt
+grep -n -w def 8task.txt

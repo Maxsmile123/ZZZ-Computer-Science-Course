@@ -1,2 +1,2 @@
 # Выведите топ 5 файлов, в которых чаще всего встречается слово "lol"
-grep -r -w -c -H "lol" ./ | sort -t: -k2 -r | head -n 5
+grep -r -w -c "lol" | awk -F : '{print $NF, $0}' | sort -rnk1,1 | cut -f2- -d' '

@@ -206,23 +206,33 @@ decod4, ,=,decod2
 2_decod4,0,>,2_decod4
 2_decod4, ,=,begAlg
 
-fin_skip,0,>,fin_skip #
+fin_skip,0,>,fin_skip
 fin_skip, ,<,zero1 # Затирание промежуточных вычислений
-zero1,0, ,zero1 #
-zero1, ,<,zero2
-zero2,0, ,zero2
+zero1,0, ,zero2
+zero1, ,<,fin
 zero2, ,<,zero3
-zero3,0, ,zero3
-zero3, ,<,zero4
-zero4,0, ,zero4
+zero3,0, ,zero4
+zero3, ,<,fin
 zero4, ,<,zero5
-zero5,0, ,zero5
-zero5, ,<,zero6
-zero6,0, ,zero6
+zero5,0, ,zero6
+zero5, ,<,fin
 zero6, ,<,zero7
-zero7,0, ,zero7
-zero7, ,<,zero8
-zero8,0, ,zero9
+zero7,0, ,zero8
+zero7, ,<,fin
+zero8, ,<,zero9
+zero9,0, ,zero10
 zero9, ,<,fin
+zero10, ,<,zero11
+zero11,0, ,zero12
+zero11, ,<,fin
+zero12, ,<,zero13
+zero13,0, ,zero14
+zero13, ,<,fin
+zero14, ,<,zero15
+zero15,0, ,zero16
+zero15, ,<,fin
+zero16, ,<,fin
+fin,0,>,fin
+fin,1,>,fin
 
 fin, ,#,fin

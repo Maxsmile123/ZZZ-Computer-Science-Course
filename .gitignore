@@ -12,6 +12,8 @@ asan*
 __pycache__
 .doit.db
 .idea
+*.swp
+*.swo
 perf.data*
 cmake-*
 cmake_*

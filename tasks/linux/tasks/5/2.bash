@@ -1,6 +1,6 @@
 # Создайте папку ./Turing/Markov/ZZZ при условии, что папок Turing и Markov не существует
-touch Turing
+mkdir Turing
 cd Turing
-touch Markov
+mkdir Markov
 cd Markov
-touch ZZZ
+mkdir ZZZ

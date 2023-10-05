@@ -240,12 +240,14 @@ class Repository:
             file.write(u'| **Студент** | **Вариант**|\n')
             file.write('|-------------|------------|\n')
             max_var = self.number_of_var[lab]
-            variants = [(x % max_var) + 1 for x in range(1, max_var + 1 + len(self.students))]
+            variants = [x for x in range(1, max_var + 1)]
             shuffle(variants)
             for i, user in enumerate(self.students):
+                if i == len(variants):
+                    shuffle(variants)
                 file.write(u'| {user} | [{var}](./tasks/{var}) |\n'.format(
                     user=user,
-                    var=variants[i]
+                    var=variants[i % max_var]
                 ))
 
 

@@ -19,19 +19,19 @@ int CheckZone(Point p) {
     return (p.x + p.y + A <= 0) && (p.x + p.y + B >= 0);
 }
 
-int ABS(int number) {
+int Abs(int number) {
     return (number < 0) ? -number : number;
 }
 
-int MIN(int num1, int num2) {
+int Min(int num1, int num2) {
     return (num1 < num2) ? num1 : num2;
 }
 
-int MAX(int num1, int num2) {
+int Max(int num1, int num2) {
     return (num1 > num2) ? num1 : num2;
 }
 
-int POW(int number, int p) {
+int Pow(int number, int p) {
     int result = 1;
     while (p--) {
         result *= number;
@@ -45,9 +45,9 @@ int Task() {
     int parameter = C;
 
     for (int step = 1; step <= D; ++step) {
-        int i = ABS(dot.x - parameter) + MIN(dot.y % A, (parameter * step) % A) - B;
-        int j = MAX(step - dot.x, MIN(dot.y, MAX(dot.x - parameter, dot.y - parameter))) % (A + B);
-        parameter = POW(parameter, B / 10) % B - MAX(dot.x, dot.y) % (step + 1);
+        int i = Abs(dot.x - parameter) + Min(dot.y % A, (parameter * step) % A) - B;
+        int j = Max(step - dot.x, Min(dot.y, Max(dot.x - parameter, dot.y - parameter))) % (A + B);
+        parameter = Pow(parameter, B / 10) % B - Max(dot.x, dot.y) % (step + 1);
         dot.x = i;
         dot.y = j;
 

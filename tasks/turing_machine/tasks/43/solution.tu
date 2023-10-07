@@ -1,5 +1,6 @@
 // Решите поставленную задачу в формате четвёрок
 
+
 00, ,<,00
 00,0,=,check_if_<_3
 00,1,=,check_if_<_3
@@ -85,7 +86,7 @@ check_true_2_put, ,2,end
 check_true_3,0,>,check_true_3
 check_true_3,1,>,check_true_3
 check_true_3, ,>,check_true_3_put
-check_true_3_put, ,>,end
+check_true_3_put, ,3,end
 
 
 check_true_4,0,>,check_true_4
@@ -1205,12 +1206,6 @@ end,4,>,end
 end,5,>,end
 end,6,>,end
 end,7,>,end
-
-
-
-
-
-
 
 
 

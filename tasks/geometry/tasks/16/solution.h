@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-typedef struct point {
+typedef struct Pnt {
     int x;
     int y;
 } Point;

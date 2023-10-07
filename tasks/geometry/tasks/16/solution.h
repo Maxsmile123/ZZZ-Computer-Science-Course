@@ -2,13 +2,13 @@
 
 #include <stdio.h>
 
-typedef struct {
+typedef struct point {
     int x;
     int y;
 } Point;
 
 
-const int A = 10
+const int A = 10;
 const int B = 20;
 const int C = 12;
 const int D = 50;
@@ -47,7 +47,7 @@ int Task() {
     for (int step = 1; step <= D; ++step) {
         int i = Abs(dot.x - parameter) + Min(dot.y % A, (parameter * step) % A) - B;
         int j = Max(step - dot.x, Min(dot.y, Max(dot.x - parameter, dot.y - parameter))) % (A + B);
-        parameter = Pow(parameter, B / 10) % B - Max(dot.x, dot.y) % (step + 1);
+        parameter = Pow(parameter, B / A) % B - Max(dot.x, dot.y) % (step + 1);
         dot.x = i;
         dot.y = j;
 

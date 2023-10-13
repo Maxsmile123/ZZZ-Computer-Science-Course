@@ -63,9 +63,9 @@ int Task() {
         p.y = j;
         int is_inside = CheckZone(p);
         if (is_inside) {
-            printf("x = %d, y = %d, l = %d, result = %d\n", p.x, p.y, l, is_inside);
-        } else {
             printf("x = %d, y = %d, l = %d, result = %d, iteration = %d\n", p.x, p.y, l, is_inside, k);
+        } else {
+            printf("x = %d, y = %d, l = %d, result = %d\n", p.x, p.y, l, is_inside);
         }
     }
     return 0;

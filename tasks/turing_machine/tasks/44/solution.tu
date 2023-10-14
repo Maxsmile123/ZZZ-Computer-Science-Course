@@ -26,7 +26,7 @@
 02,5, ,p101
 02,6, ,p110
 02,7, ,p111
-02, ,=,check
+02, ,=,del0
 
 #0
 
@@ -436,89 +436,112 @@ back72,7,<,back72
 back72, ,7,back73
 back73,7,>,02
 
-//Удаление незначущих нулей и сдвиг влево
+#del0
 
-#check
+del0, ,>,del0
+del0,1,=,not0
+del0,0,>,delchecknext
+delchecknext,0,<,delpriv
+delchecknext,1,<,delpriv
+delpriv,0, ,delpriv
+delpriv, ,>,del0
+delchecknext, ,=,ans0
 
-check, ,>,check1
-check1,0, ,1right0
-check1,1,=,makefin
-check1,2,=,makefin
-check1,3,=,makefin
-check1,4,=,makefin
-check1,5,=,makefin
-check1,6,=,makefin
-check1,7,=,makefin
-1right0, ,>,check1
-check1, ,<,ansis0
+#ans0
 
-#makefin
+ans0, ,<,ans0
+ans0,0, ,set0
+set0, ,<,set0
+set0,0,>,set01
+set0,1,>,set01
+set0,2,>,set01
+set0,3,>,set01
+set0,4,>,set01
+set0,5,>,set01
+set0,6,>,set01
+set0,7,>,set01
+set01, ,>,pr0
+pr0, ,0,left
 
-makefin, ,>,makefinf
-makefin,0,>,makefin
-makefin,1,>,makefin
-makefin,2,>,makefin
-makefin,3,>,makefin
-makefin,4,>,makefin
-makefin,5,>,makefin
-makefin,6,>,makefin
-makefin,7,>,makefin
+#ansnot0
 
-makefinf, ,<,makefinfn
-makefinfn, ,f,tostart
+not0,1, ,checknext
+checknext, ,>,checknext1
+checknext1, ,<,end1
+checknext1,0,<,noend
+checknext1,1,<,noend
+end1, ,<,end1
+end1,0,>,end10
+end1,1,>,end10
+end1,2,>,end10
+end1,3,>,end10
+end1,4,>,end10
+end1,5,>,end10
+end1,6,>,end10
+end1,7,>,end10
+end10, ,>,end101
+end101, ,1,left
 
-#tostart
+#noend
 
-tostart,f,<,tostart
-tostart,0,<,tostart
-tostart,1,<,tostart
-tostart, ,>,get
+noend, ,<,noend
+noend,0,>,noend1
+noend,1,>,noend1
+noend,2,>,noend1
+noend,3,>,noend1
+noend,4,>,noend1
+noend,5,>,noend1
+noend,6,>,noend1
+noend,7,>,noend1
+noend1, ,>,noend10
+noend10, ,1,backtoans
 
-#get
+#backtoans
 
-get,1,=,getfirst1
-getfirst1,1, ,getfirst1
-getfirst1, ,<,getpassfirst
-getpassfirst, ,<,getpassfirst
-getpassfirst,0,>,getspace
-getpassfirst,1,>,getspace
-getpassfirst,2,>,getspace
-getpassfirst,3,>,getspace
-getpassfirst,4,>,getspace
-getpassfirst,5,>,getspace
-getpassfirst,6,>,getspace
-getpassfirst,7,>,getspace
-getspace, ,>,finalyplace
-finalyplace, ,1,1right
-1right,1,>,toans
-1right,0,>,toans
+backtoans,1,>,backtoans1
+backtoans,0,>,backtoans1
+backtoans1, ,>,backtoans1
+backtoans1,1,=,checktof
+backtoans1,0,=,checktof
 
+#checktof
 
-#toans
+checktof,0, ,checknextnf0
+checktof,1, ,checknextnf1
+checknextnf0, ,>,checknextnf00
+checknextnf00, ,<,nowend0
+checknextnf00,0,<,nownotend0
+checknextnf00,1,<,nownotend0
+nownotend0,0,<,nownotend01
+nownotend0,1,<,nownotend01
+nownotend0, ,<,nownotend01
+nownotend01, ,<,nownotend01
+nownotend01,0,>,pass0
+nownotend01,1,>,pass0
+pass0, ,0,nexttoans
+nexttoans,0,>,nexttoans
+nexttoans,1,>,nexttoans
+nexttoans, ,=,backtoans1
+nowend0, ,<,nowend0
+nowend0,0,>,pass0e
+nowend0,1,>,pass0e
+pass0e, ,0,left
 
-toans, ,>,toans
-toans,0, ,copy0
-toans,1, ,copy1
-toans,f, ,left
-
-#copy
-
-copy0, ,<,copy0
-copy0,1,>,place0
-copy0,0,>,place0
-place0, ,0,1right
-
-copy1, ,<,copy1
-copy1,1,>,place1
-copy1,0,>,place1
-place1, ,1,1right
-
-#ansis0
-
-ansis0, ,<,ansis0
-ansis0,0,>,pass0
-pass0, ,>,print0
-print0, ,0,fin
+checknextnf1, ,>,checknextnf10
+checknextnf10, ,<,nowend1
+checknextnf10,0,<,nownotend1
+checknextnf10,1,<,nownotend1
+nownotend1,0,<,nownotend10
+nownotend1,1,<,nownotend10
+nownotend1, ,<,nownotend10
+nownotend10, ,<,nownotend10
+nownotend10,0,>,pass1
+nownotend10,1,>,pass1
+pass1, ,1,nexttoans
+nowend1, ,<,nowend1
+nowend1,0,>,pass1e
+nowend1,1,>,pass1e
+pass1e, ,1,left
 
 #fin
 

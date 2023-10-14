@@ -519,9 +519,11 @@ nownotend01, ,<,nownotend01
 nownotend01,0,>,pass0
 nownotend01,1,>,pass0
 pass0, ,0,nexttoans
-nexttoans,0,>,nexttoans
-nexttoans,1,>,nexttoans
-nexttoans, ,=,backtoans1
+nexttoans,0,>,nexttoans1
+nexttoans,1,>,nexttoans1
+nexttoans1, ,=,backtoans1
+nexttoans1,1,=,checktof
+nexttoans1,0,=,checktof
 nowend0, ,<,nowend0
 nowend0,0,>,pass0e
 nowend0,1,>,pass0e

@@ -88,9 +88,16 @@ f2,0,1,mr  f2, ,<,ml
 
 ml,0,<,ml  ml,1,<,ml  ml, ,<,sdv
 
-sdv,0,<,sdv  sdv,1,0,sdv1  sdv, ,>,mrr
-sdv1,0,<,sdv12
-sdv12,0,1,sdv12  sdv12,1,<,sdv  sdv12, ,>,mrr
+sdv,0,<,sdv  sdv,1,0,sdv1  sdv, ,>,mvv
+sdv1,0,<,sdv201
+
+sdv2,0,<,sdv200  sdv2,1,<,sdv201  sdv2, ,>,mrr
+
+sdv20,0,<,sdv200  sdv20,1,<,sdv200  sdv20, ,>,mrr
+sdv21,0,<,sdv201  sdv21,1,<,sdv201  sdv21, ,>,mrr
+
+sdv200,1,0,sdv21  sdv200,0,=,sdv20  sdv200, ,>,mrr
+sdv201,0,1,sdv20  sdv201,1,=,sdv21  sdv201, ,>,mrr
 
 # Возвращаемся "домой" для повторения/окончания
 
@@ -98,6 +105,12 @@ mrr,0,>,mrr  mrr,1,>,mrr  mrr, ,>,mrr2
 mrr2,0,>,mrr2  mrr2,1,>,mrr2  mrr2, ,<,f1
 
 # "Подтирка" и успешное завершение кода
+
+mvv,0,>,mvv  mvv,1,>,mvv  mvv, ,>,mvv2
+
+mvv2,0, ,mvv3  mvv2,1, ,mvv3  mvv2, ,<,mvv4
+mvv3, ,>,mvv2
+mvv4, ,<,mvv4  mvv4,0,>,endd  mvv4,1,>,endd
 
 end,0, ,end_m  end, ,<,end2
 end_m, ,>,end

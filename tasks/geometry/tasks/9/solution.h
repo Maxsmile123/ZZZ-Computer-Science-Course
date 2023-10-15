@@ -46,6 +46,14 @@ int Sign(int n) {
     return -1;
 }
 
+int Mod(int x, int y) {
+    if (x != 0) {
+        return Sign(x) == Sign(y) ? x % y : y + (x % y);
+    } else {
+        return 0;
+    }
+}
+
 int Task() {
     int i = ZERO_ITERATION_I;
     int j = ZERO_ITERATION_J;
@@ -54,11 +62,10 @@ int Task() {
     p.x = i;
     p.y = j;
     for (int k = 1; k <= ITERATIONS; ++k) {
-        i = (Abs(Max(p.x * (k + FOUR), p.y * (k + FIVE))) - Abs(Min(p.y * (k + SIX), l * (k + SEVEN)))) % TWENTY;
-        j = ((THREE - Sign(p.x - p.y)) * Abs(Min(p.x * l + FIVE, Min(p.y * l - THREE, p.x * p.y + SIX)))) %
-                TWENTY_FIVE -
+        i = Mod((Abs(Max(p.x * (k + FOUR), p.y * (k + FIVE))) - Abs(Min(p.y * (k + SIX), l * (k + SEVEN)))), TWENTY);
+        j = Mod(((THREE - Sign(p.x - p.y)) * Abs(Min(p.x * l + FIVE, Min(p.y * l - THREE, p.x * p.y + SIX)))), TWENTY_FIVE) -
             SEVEN;
-        l = p.x % TEN + p.y % TEN + l % TEN;
+        l = Mod(p.x, TEN) + Mod(p.y, TEN) + Mod(l, TEN);
         p.x = i;
         p.y = j;
         int is_inside = CheckZone(p);

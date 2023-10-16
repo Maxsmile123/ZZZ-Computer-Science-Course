@@ -79,7 +79,7 @@ int Task() {
         }
     }
     if (flag) {
-        printf("The point never hit the area");
+        printf("The point never hit the area.");
     }
     return 0;
 }

@@ -47,7 +47,7 @@ int64_t Solve(int64_t number, size_t zero_count, size_t bin_len) {
     // Прибавляем правую часть числа без изменений
     result += number & (Pow2(half_bin_len + 1) - 1);
     // Прибавляем левую часть числа, но с учётом вставленных нулей
-    result += (number - result) << (bin_len - half_bin_len);
+    result += (number - result) << zero_count;
     return result;
 }
 

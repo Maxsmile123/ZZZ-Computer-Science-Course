@@ -4,25 +4,26 @@
 #include <stdio.h>
 
 const int64_t TEN = 10;
+const int64_t INPUT_NUM = 12345678987654321;
 
 int Task() {
-    int64_t num = 0;
-    bool flag = false;
-    scanf("%lld", &num);
+    int64_t num = INPUT_NUM;
+    int flag = 0;
+    // scanf("%lld", &num);
     if (num < TEN) {
         printf("No");
     } else {
         while (num >= TEN) {
             if (num % TEN == (num / TEN) % TEN) {
-                flag = true;
+                flag = 1;
                 break;
             }
             num /= TEN;
         }
         if (flag) {
-            printf("Yes");
+            printf("Yes\n");
         } else {
-            printf("No");
+            printf("No\n");
         }
     }
     return 0;

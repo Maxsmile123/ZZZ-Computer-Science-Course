@@ -3,9 +3,9 @@
 #include <stdio.h>
 
 const int ITERATIONS = 50;
-const int ZERO_ITERATION_I = 10;
-const int ZERO_ITERATION_J = 20;
-const int ZERO_ITERATION_L = -1;
+const int START_I = 10;
+const int START_J = 20;
+const int START_L = -1;
 const int LEFT_AND_BOTTOM_FACES = 5;
 const int RIGHT_AND_HIGH_FACES = 15;
 const int THREE = 3;
@@ -40,40 +40,46 @@ int Min(int x, int y) {
 }
 
 int Sign(int n) {
-    if (n >= 0) {
-        return (n == 0) ? 0 : 1;
+    if (n) {
+        return (n > 0) ? 1 : -1;
     }
-    return -1;
+    return 0;
 }
 
 int Mod(int x, int y) {
-    if (x != 0) {
+    if (x != 0 and y != 0) {
         return Sign(x) == Sign(y) ? x % y : y + (x % y);
-    } else {
-        return 0;
     }
+    return 0;
 }
 
 int Task() {
-    int i = ZERO_ITERATION_I;
-    int j = ZERO_ITERATION_J;
-    int l = ZERO_ITERATION_L;
+    int is_inside = 0;
+    int flag = 1;
+    int i = 0;
+    int j = 0;
     Point p;
-    p.x = i;
-    p.y = j;
+    p.x = START_I;
+    p.y = START_J;
+    int l = START_L;
     for (int k = 1; k <= ITERATIONS; ++k) {
         i = Mod((Abs(Max(p.x * (k + FOUR), p.y * (k + FIVE))) - Abs(Min(p.y * (k + SIX), l * (k + SEVEN)))), TWENTY);
-        j = Mod(((THREE - Sign(p.x - p.y)) * Abs(Min(p.x * l + FIVE, Min(p.y * l - THREE, p.x * p.y + SIX)))), TWENTY_FIVE) -
+        j = Mod(((THREE - Sign(p.x - p.y)) * Abs(Min(p.x * l + FIVE, Min(p.y * l - THREE, p.x * p.y + SIX)))),
+                TWENTY_FIVE) -
             SEVEN;
         l = Mod(p.x, TEN) + Mod(p.y, TEN) + Mod(l, TEN);
         p.x = i;
         p.y = j;
-        int is_inside = CheckZone(p);
+        is_inside = CheckZone(p);
         if (is_inside) {
             printf("x = %d, y = %d, l = %d, result = %d, iteration = %d\n", p.x, p.y, l, is_inside, k);
+            flag = 0;
         } else {
             printf("x = %d, y = %d, l = %d, result = %d\n", p.x, p.y, l, is_inside);
         }
+    }
+    if (flag) {
+        printf("The point never hit the area");
     }
     return 0;
 }

@@ -59,11 +59,15 @@ int Abs(int num) {
     return -num;
 }
 
-int Pow(int num, int degree) {
+int Pow(int num, unsigned int degree) {
     int result = num;
-    while (degree != 1) {
-        result *= result;
-        degree -= 1;
+    if (degree == 0) {
+        return 1;
+    } else if (degree > 0) {
+        while (degree != 1) {
+            result *= result;
+            degree -= 1;
+        }
     }
     return result;
 }
@@ -82,11 +86,9 @@ int Task() {
     p.x = i;
     p.y = j;
     for (int k = 1; k <= ITERATIONS; ++k) {
-        i = Sign(Min(p.x, p.y)) * Max(Mod(p.x + k, TWENTY), Mod(p.y + l, TWENTY));
-        j = Abs(Max(p.x, p.y)) - k * Min(p.y, l);
+        p.x = Sign(Min(p.x, p.y)) * Max(Mod(p.x + k, TWENTY), Mod(p.y + l, TWENTY));
+        p.y = Abs(Max(p.x, p.y)) - k * Min(p.y, l);
         l = (k - l) / ((p.x + p.y + l) * Mod(p.x + p.y + l, FIVE) + 1);
-        p.x = i;
-        p.y = j;
         printf("k = %d, x = %d, y = %d, l = %d belong = %d \n", k, p.x, p.y, l, CheckZone(p));
         if (CheckZone(p)) {
             break;

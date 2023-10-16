@@ -63,7 +63,7 @@ int Pow(int num, unsigned int degree) {
     int result = num;
     if (degree == 0) {
         return 1;
-    } else if (degree > 0) {
+    } else {
         while (degree != 1) {
             result *= result;
             degree -= 1;

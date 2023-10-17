@@ -43,7 +43,7 @@ size_t CountBinaryLen(int64_t n) {
 int64_t Solve(int64_t number, size_t zero_count, size_t bin_len) {
     int64_t result = 0;
     size_t half_bin_len = (bin_len + 1) >> 1;
-    
+
     // Прибавляем правую часть числа без изменений
     result += number & (Pow2(half_bin_len) - 1);
     // Прибавляем левую часть числа, но с учётом вставленных нулей

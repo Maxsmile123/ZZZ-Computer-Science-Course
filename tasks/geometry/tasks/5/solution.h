@@ -63,7 +63,8 @@ typedef struct {
 } Point;
 
 int CheckZone(Point p) {
-    int cord_x = p.x, cord_y = p.y;
+    int cord_x = p.x;
+    int cord_y = p.y;
     if (((cord_x - X_0) * (cord_x - X_0) + (cord_y - Y_0) * (cord_y - Y_0) <= R_BIG * R_BIG) &&
         ((cord_x - X_0) * (cord_x - X_0) + (cord_y - Y_0) * (cord_y - Y_0) >= R_SMALL * R_SMALL)) {
         return 1;

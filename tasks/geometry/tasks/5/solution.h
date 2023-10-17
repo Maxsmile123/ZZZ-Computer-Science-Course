@@ -84,9 +84,9 @@ int Task() {
     int count_belong = 0;  // Счетчик точек, принадлежащих зоне
 
     for (int k = ONE; k <= ITERATIONS; ++k) {
-        i = Max(p.y - k, l - k) % THIRTY + Max(p.x + l, p.y + k) % TWENTY;
-        j = (Abs(p.x - l) * Sign(p.y + k) + Abs(p.x - k) * (p.y + k)) % TWENTY;
-        l = ((p.x + k) * (p.y - k) * (l + k)) % TWENTYFIVE;
+        i = Mod(Max(p.y - k, l - k), THIRTY) + Mod(Max(p.x + l, p.y + k), TWENTY);
+        j = Mod((Abs(p.x - l) * Sign(p.y + k) + (Abs(p.x - k) * (p.y + k))), TWENTY);
+        l = Mod(((p.x + k) * (p.y - k) * (l + k)), TWENTYFIVE);
         p.x = i;
         p.y = j;
         printf("k = %d, x = %d, y = %d, l = %d belong = %d \n", k, p.x, p.y, l, CheckZone(p));

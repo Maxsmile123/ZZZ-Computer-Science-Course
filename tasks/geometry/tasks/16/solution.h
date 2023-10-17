@@ -22,7 +22,7 @@ int Min(int number_1, int number_2) {
     return (number_1 < number_2) ? number_1 : number_2;
 }
 
-int Max(int number_1, int number_2) {   
+int Max(int number_1, int number_2) {
     return (number_1 > number_2) ? number_1 : number_2;
 }
 

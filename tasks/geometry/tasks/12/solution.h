@@ -24,9 +24,9 @@ int Min(int num_1, int num_2) {
 
 int Max(int num_1, int num_2) {
     if (num_1 > num_2) {
-        return num_2;
+        return num_1;
     }
-    return num_1;
+    return num_2;
 }
 
 int Mod(int num, int base) {

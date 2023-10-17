@@ -23,7 +23,7 @@ size_t CountZeros() {
             ++zero_count;
         }
     }
-    return zero_count; 
+    return zero_count;
 }
 
 // Подсчитывает длину числа в довичном представлении
@@ -45,22 +45,24 @@ int64_t Solve(int64_t number, size_t zero_count, size_t bin_len) {
     size_t half_bin_len = (bin_len + 1) >> 1;
     
     // Прибавляем правую часть числа без изменений
-    result += number & (Pow2(half_bin_len + 1) - 1);
+    result += number & (Pow2(half_bin_len) - 1);
     // Прибавляем левую часть числа, но с учётом вставленных нулей
     result += (number - result) << zero_count;
     return result;
 }
 
+const size_t ZERO_COUNT = 3;  // comment this line
+const int64_t NUMBER = 7;     // comment this line
+
 int Task() {
     // Считаем количество нулей и считываем число
-    size_t zero_count = CountZeros();
-    int64_t number = 0;
-    scanf("%ld", &number);
+    // size_t zero_count = CountZeros();  // uncomment this line
+    // scanf("%ld", &number);  // uncomment this line
 
     // Считаем длину двоичного представления и решаем задачу
-    size_t bin_len = CountBinaryLen(number);
-    int64_t result = Solve(number, zero_count, bin_len);
-    printf("%ld\n", (number < 0) ? -result : result);
+    size_t bin_len = CountBinaryLen(NUMBER);
+    int64_t result = Solve(NUMBER, ZERO_COUNT, bin_len);
+    printf("%ld\n", (NUMBER < 0) ? -result : result);  // answer 111 -> 100011 -> 35
 
     return 0;
 }

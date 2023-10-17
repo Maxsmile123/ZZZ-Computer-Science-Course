@@ -40,8 +40,11 @@ size_t CountBinaryLen(int64_t n) {
 }
 
 // Решает поставленную задачу
-int64_t Solve(int64_t number, size_t zero_count, size_t bin_len) {
+int64_t Solve(int64_t number, size_t zero_count) {
     int64_t result = 0;
+
+    // Считаем длину двоичного числа
+    size_t bin_len = CountBinaryLen(number);
     size_t half_bin_len = (bin_len + 1) >> 1;
 
     // Прибавляем правую часть числа без изменений
@@ -59,9 +62,8 @@ int Task() {
     // size_t zero_count = CountZeros();  // uncomment this line
     // scanf("%ld", &number);  // uncomment this line
 
-    // Считаем длину двоичного представления и решаем задачу
-    size_t bin_len = CountBinaryLen(NUMBER);
-    int64_t result = Solve(NUMBER, ZERO_COUNT, bin_len);
+    // Решаем задачу
+    int64_t result = Solve(NUMBER, ZERO_COUNT);
     printf("%ld\n", (NUMBER < 0) ? -result : result);  // answer 111 -> 100011 -> 35
 
     return 0;

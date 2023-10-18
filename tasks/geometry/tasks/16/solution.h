@@ -51,12 +51,14 @@ const int J0 = -4;
 const int L0 = 12;
 
 int Task() {
-    // start coordinates
-    Point dot = {I0, J0};
+    int i = I0;
+    int j = J0;
     int l = L0;
+    // start coordinates
+    Point dot = {i, j};
     for (int step = 1; step <= MAX_ITERATIONS; ++step) {
-        int i = Abs(dot.x - l) + Min(Mod(dot.y, P1_I), Mod(l * step, P1_I)) + P2_I;
-        int j = Mod(Max(step - dot.x, Min(dot.y, Max(dot.x - l, dot.y - l))), P_J);
+        i = Abs(dot.x - l) + Min(Mod(dot.y, P1_I), Mod(l * step, P1_I)) + P2_I;
+        j = Mod(Max(step - dot.x, Min(dot.y, Max(dot.x - l, dot.y - l))), P_J);
         l = Mod(Pow(l, 2), P_L) - Mod(Max(dot.x, dot.y), step + 1);
         dot = {i, j};
         printf("Step: %d, Dot: (%d, %d)\n", step, dot.x, dot.y);

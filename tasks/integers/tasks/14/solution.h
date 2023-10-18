@@ -17,19 +17,19 @@ bool HasTwoDigits(int64_t x) {
 int Task() {
     int64_t num = INPUT_NUM;
     num = Abs(num);
-    bool is_satisfying_condition = false;
+    bool has_two_identical_adjacent_digits = false;
     // scanf("%lld", &num);
     if (HasTwoDigits(num)) {
         printf("No\n");
     } else {
         while (num >= TEN) {
             if (num % TEN == (num / TEN) % TEN) {
-                is_satisfying_condition = true;
+                has_two_identical_adjacent_digits = true;
                 break;
             }
             num /= TEN;
         }
-        if (is_satisfying_condition) {
+        if (has_two_identical_adjacent_digits) {
             printf("Yes\n");
         } else {
             printf("No\n");

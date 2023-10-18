@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 const int64_t TEN = 10;
-const int64_t INPUT_NUM = -123456789876543211;
+const int64_t INPUT_NUM = -1234567898765432111;
 
 int64_t Abs(int64_t x) {
     return (x >= 0) ? x : -x;

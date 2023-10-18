@@ -63,14 +63,8 @@ typedef struct {
 } Point;
 
 int CheckZone(Point p) {
-    int cord_x = p.x;
-    int cord_y = p.y;
-    if (((cord_x - X_0) * (cord_x - X_0) + (cord_y - Y_0) * (cord_y - Y_0) <= R_BIG * R_BIG) &&
-        ((cord_x - X_0) * (cord_x - X_0) + (cord_y - Y_0) * (cord_y - Y_0) >= R_SMALL * R_SMALL)) {
-        return 1;
-    } else {
-        return 0;
-    }
+    return (((p.x - X_0) * (p.x - X_0) + (p.y - Y_0) * (p.y - Y_0) <= R_BIG * R_BIG) &&
+            ((p.x - X_0) * (p.x - X_0) + (p.y - Y_0) * (p.y - Y_0) >= R_SMALL * R_SMALL));
 }
 
 int Task() {
@@ -81,7 +75,7 @@ int Task() {
     p.x = i;
     p.y = j;
 
-    int count_belong = 0;  // Счетчик точек, принадлежащих зоне
+    int in_zone_points_count = 0;  // Счетчик точек, принадлежащих зоне
 
     for (int k = ONE; k <= ITERATIONS; ++k) {
         i = Mod(Max(p.y - k, l - k), THIRTY) + Mod(Max(p.x + l, p.y + k), TWENTY);
@@ -92,11 +86,11 @@ int Task() {
         printf("k = %d, x = %d, y = %d, l = %d belong = %d \n", k, p.x, p.y, l, CheckZone(p));
 
         if (CheckZone(p)) {
-            count_belong++;
+            in_zone_points_count++;
         }
     }
 
-    printf("Number of points belonging to the zone: %d\n", count_belong);
+    printf("Number of points belonging to the zone: %d\n", in_zone_points_count);
 
     return 0;
 }

@@ -4,32 +4,30 @@
 #include <stdio.h>
 
 const int64_t TEN = 10;
-const int64_t INPUT_NUM = -1234567898765432111;
+const int64_t INPUT_NUM = -123456789;
 
-int64_t Abs(int64_t x) {
-    return (x >= 0) ? x : -x;
+bool IsOneDigit(int64_t x) {
+    return -TEN < x and x < TEN;
 }
 
-bool HasTwoDigits(int64_t x) {
-    return x < TEN;
+bool HasEqualPairDigits(int64_t num) {
+    while (num >= TEN or num <= -TEN) {
+        if (num % TEN == (num / TEN) % TEN) {
+            return true;
+            break;
+        }
+        num /= TEN;
+    }
+    return false;
 }
 
 int Task() {
     int64_t num = INPUT_NUM;
-    num = Abs(num);
-    bool has_two_identical_adjacent_digits = false;
     // scanf("%lld", &num);
-    if (HasTwoDigits(num)) {
+    if (IsOneDigit(num)) {
         printf("No\n");
     } else {
-        while (num >= TEN) {
-            if (num % TEN == (num / TEN) % TEN) {
-                has_two_identical_adjacent_digits = true;
-                break;
-            }
-            num /= TEN;
-        }
-        if (has_two_identical_adjacent_digits) {
+        if (HasEqualPairDigits(num)) {
             printf("Yes\n");
         } else {
             printf("No\n");

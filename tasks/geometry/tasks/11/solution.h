@@ -54,7 +54,7 @@ int Module(int chiclo) {
     return (chiclo >= 0) ? chiclo : chiclo * (-1);
 }
 
-int Task() { 
+int Task() {
     const int i_start = 5;
     const int j_start = 5;
     const int l_start = 4;

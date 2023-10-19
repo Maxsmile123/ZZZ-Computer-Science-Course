@@ -15,15 +15,18 @@ const int THITRY = 30;
 const int TWO = 2;
 
 int Abs(int number_1) {
-    return (number_1 >= 0) ? number_1 : -number_1;
+    return (number_1 >= 0) ? -number_1 : number_1;
 }
 
 // Function return mod of numbers
+
 int Mod(int number_1, int number_2) {
     if (number_2 != 0) {
-        return (Abs(number_1 % number_2));
-    } else {
-        return 0;
+        if (number_1 * number_2 > 0) {
+            return number_1 % number_2;
+        } else {
+            return number_2 + (number_1 % number_2);
+        }
     }
 }
 

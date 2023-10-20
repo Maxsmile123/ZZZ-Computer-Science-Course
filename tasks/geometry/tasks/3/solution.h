@@ -27,51 +27,51 @@ int CheckZone(Point p) {
     int rad_square_1 = RAD_1 * RAD_1;
     int rad_square_2 = RAD_2 * RAD_2;
     if ((first_x + first_y >= rad_square_1) && (first_x + first_y <= rad_square_2)) {
-	return 1;
+        return 1;
     } else {
-	return 2;
+        return 2;
     }
 }
 
 int mod(int x, int y) {
     if (y != 0) {
-	return x % y;
+	 return x % y;
     } else {
-	return 0;
+	 return 0;
     }
 }
 int abs(int x) {
     if (x > 0) {
-	return x;
+	 return x;
     } else {
-	return x * -1;
+	 return x * -1;
     }
 }
 
 int sign(int x) {
     if (x > 0) {
-	return 1;
+	 return 1;
     }
     if (x == 0) {
-	return 0;
+	 return 0;
     } else {
-	return -1;
+	 return -1;
     }
 }
 
 int maxz(int x, int y) {
     if (x > y) {
-	return x;
+	 return x;
     } else {
-	return y;
+	 return y;
     }
 }
 
 int minz(int x, int y) {
     if (x < y) {
-	return x;
+	 return x;
     } else {
-	return y;
+	 return y;
     }
 }
 
@@ -80,20 +80,20 @@ int Task() {
     int j_0 = JK;
     int l_0 = LK;
     for (int i = 0; i < MAX_ITERATIONS; ++i) {
-	Point p;
-	p.x = i_0;
-	p.y = j_0;
-	int i_1 = 0;
-	int j_1 = 0;
-	if (CheckZone(p) == 1) {
-		printf("x = %d, y = %d\n", i_0, j_0);
-	}
-	i_1 = i_0 / IK - (i_0 - i) * sign(l_0 - j_0);
-	j_1 = mod(j_0, LK) - mod(maxz(i_0, l_0), 10) % (i + 1);
-	int l_1 = i_0 + mod(j_0 * i, IK) + l_0 / JK + IK;
-	i_0 = i_1;
-	j_0 = j_1;
-	l_0 = l_1;
+	 Point p;
+	 p.x = i_0;
+	 p.y = j_0;
+	 int i_1 = 0;
+	 int j_1 = 0;
+	 if (CheckZone(p) == 1) {
+	 	 printf("x = %d, y = %d\n", i_0, j_0);
+	 }
+	 i_1 = i_0 / IK - (i_0 - i) * sign(l_0 - j_0);
+	 j_1 = mod(j_0, LK) - mod(maxz(i_0, l_0), 10) % (i + 1);
+	 int l_1 = i_0 + mod(j_0 * i, IK) + l_0 / JK + IK;
+	 i_0 = i_1;
+	 j_0 = j_1;
+	 l_0 = l_1;
     }
-   return 0;
+    return 0;
 }

@@ -1,7 +1,6 @@
-#include <iostream>
 #include <stdio.h>
 
-const int ITERATIONS = 50;
+const int MAX_ITERATIONS = 50;
 const int cord_X1 = 10;
 const int cord_Y1 = 10;
 const int rad_1 = 5;
@@ -80,7 +79,7 @@ int Task() {
 	int i_0 = ik;
 	int j_0 = jk;
 	int l_0 = lk;
-	for (int i = 0; i < ITERATIONS; ++i) {
+	for (int i = 0; i < MAX_ITERATIONS; ++i) {
 		Point p;
 		p.x = i_0;
 		p.y = j_0;

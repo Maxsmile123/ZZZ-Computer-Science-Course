@@ -6,7 +6,6 @@ const int cord_X1 = 10;
 const int cord_Y1 = 10;
 const int rad_1 = 5;
 const int rad_2 = 10;
-
 typedef struct {
 	int x;
 	int y;
@@ -21,7 +20,7 @@ int CheckZone(Point p) {
 	int rad_square_2 = rad_2 * rad_2;
 	if ((first_x + first_y >= rad_square_1) && (first_x + first_y <= rad_square_2)) {
 		return 1;
-	}else {
+	} else {
 		return 2;
 	}
 }
@@ -29,16 +28,14 @@ int CheckZone(Point p) {
 int mod(int x, int y) {
 	if (y != 0) {
 		return x % y;
-	}
-	else {
+	} else {
 		return 0;
 	}
 }
 int abs(int x) {
 	if (x > 0) {
 		return x;
-	}
-	else {
+	} else {
 		return x * -1;
 	}
 }
@@ -49,8 +46,7 @@ int sign(int x) {
 	}
 	if (x == 0) {
 		return 0;
-	}
-	else {
+	} else {
 		return -1;
 	}
 }
@@ -58,8 +54,7 @@ int sign(int x) {
 int maxz(int x, int y) {
 	if (x > y) {
 		return x;
-	}
-	else {
+	} else {
 		return y;
 	}
 }
@@ -67,8 +62,7 @@ int maxz(int x, int y) {
 int minz(int x, int y) {
 	if (x < y) {
 		return x;
-	}
-	else {
+	} else {
 		return y;
 	}
 }
@@ -103,5 +97,3 @@ int Task() {
 	}
 	return 0;
 }
-
-

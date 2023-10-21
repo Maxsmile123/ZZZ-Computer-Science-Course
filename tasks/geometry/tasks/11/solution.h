@@ -35,7 +35,7 @@ int Max(int first_number, int second_number) {
     return (first_number > second_number) ? first_number : second_number;
 }
 
-// This Function returning sign of number
+// This Function return sign of number
 
 int Sign(int number) {
     if (number < 0) {

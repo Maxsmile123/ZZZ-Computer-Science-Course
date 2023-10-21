@@ -3,5 +3,5 @@
 hey.uy@gmail.com
 NiceTask@gmail.com
 '''
-grep personal.txt *@gmail.com*
+cat personal.txt | grep ".@gmail.com"
 

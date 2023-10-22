@@ -6,7 +6,7 @@
 int Task() {
     // write your solution here
     int count_number = 0;
-    char c;
+    char c = 0;
     while ((c = getchar()) != EOF) {
         count_number += 1;
         if ((count_number % 2) != 0) {

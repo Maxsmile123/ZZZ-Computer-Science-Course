@@ -63,7 +63,7 @@ int Sign(int a) {
 int CheckZone(Point p) {
     // Write a code here that checks whether a point belongs to a given area
     if (p.y >= p.x + TEN && p.y <= MINUS_ONE * p.x + TEN && p.x >= MINUS_TEN) {
-        printf("Точка с координатами %d %d попадает в область\n", p.x, p.y);
+        printf("Tочка с координатами %d %d попадает в область\n", p.x, p.y);
     } else {
         printf("Точка с координатами %d %d НЕ попадает в область\n", p.x, p.y);
     }

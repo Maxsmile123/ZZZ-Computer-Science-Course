@@ -53,21 +53,25 @@ int Max(int a, int b) {
 }
 
 int Sign(int a) {
-    if (a >= 0) {
+    if (a > 0) {
         return 1;
-    } else {
+    } else if (a < 0) {
         return -1;
+    } else {
+        return 0;
     }
 }
 
 int CheckZone(Point p) {
     // Write a code here that checks whether a point belongs to a given area
+    int success = 0;
     if (p.y >= p.x + TEN && p.y <= MINUS_ONE * p.x + TEN && p.x >= MINUS_TEN) {
         printf("Tочка с координатами %d %d попадает в область\n", p.x, p.y);
+        success = 1;
     } else {
         printf("Точка с координатами %d %d НЕ попадает в область\n", p.x, p.y);
     }
-    return 0;
+    return success;
 }
 
 int Task() {
@@ -76,12 +80,25 @@ int Task() {
     p.x = MINUS_TWELVE;
     p.y = MINUS_TWENTY_TWO;
     int l = ELEVEN;
+    int global_success = 0;
+    int temp_x = 0;
+    int temp_y = 0;
+    int temp_l = 0;
     for (int i = 0; i < FIFTY; ++i) {
-        CheckZone(p);
-        p.x = Max(Mod(Min(p.x - p.y, p.y - l), TWENTY), Mod(Min(p.x - l, p.y - i), TWENTY)) + TEN;
-        p.y = Sign(p.x - p.y) * Min(Mod(p.x, TWENTY), Mod(p.y, TWENTY)) -
-              Mod(Max(Abs(p.x - l), Abs(i - TWENTY)), TWENTY) + TWENTY;
-        l = Mod(p.x, TEN) * Mod(p.y, TEN) + Mod(l, TEN);
+        if (CheckZone(p) == 1) {
+            global_success = 1;
+        }
+        temp_x = p.x;
+        temp_y = p.y;
+        temp_l = l;
+        p.x = Max(Mod(Min(temp_x - temp_y, temp_y - temp_l), TWENTY), Mod(Min(temp_x - temp_l, temp_y - i), TWENTY)) +
+              TEN;
+        p.y = Sign(temp_x - temp_y) * Min(Mod(temp_x, TWENTY), Mod(temp_y, TWENTY)) -
+              Mod(Max(Abs(temp_x - temp_l), Abs(i - TWENTY)), TWENTY) + TWENTY;
+        l = Mod(temp_x, TEN) * Mod(temp_y, TEN) + Mod(temp_l, TEN);
+    }
+    if (not global_success) {
+        printf("Точка не попала в область за 50 итераций.\n");
     }
     return 0;
 }

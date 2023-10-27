@@ -16,68 +16,68 @@ typedef struct {
     int y;
 } Point;
 
-int Max_2(int a, int b) {
-    if (a > b) {
-        return a; 
+int Max_2(int num1, int num2) {
+    if (num1 > num2) {
+        return num1;
     } else {
-        return b; 
-    } 
+        return num2;
+    }
 } 
  
-int Max_3(int a, int b, int c) {
-    if ((a >= b) && (a >= c)) {
-        return a; 
-    } else if((b >= a) && (b >= c)) {
-        return b; 
+int Max_3(int num1, int num2, int num3) {
+    if ((num1 >= num2) && (num1 >= num3)) {
+        return num1;
+    } else if((num2 >= num1) && (num2 >= num3)) {
+        return num2;
     } else {
-        return c; 
-    } 
+        return num3;
+    }
 } 
  
-int Min(int a, int b) {
-    if (a < b) {
-        return a; 
+int Min(int num1, int num2) {
+    if (num1 < num2) {
+        return num1;
     } else {
-        return b; 
-    } 
-} 
+        return num2;
+    }
+}
  
-int Abs(int a) {
-    if (a > 0) {
-        return a; 
+int Abs(int num) {
+    if (num > 0) {
+        return num;
     } else {
-        return a * -1; 
-    } 
-} 
+        return num * -1;
+    }
+}
  
-int Mod(int a, int b) {
+int Mod(int num1, int num2) {
     int res = 0;
-    if (a >= 0) {
-        while (a >= b) {
-            a = a - b; 
-        } 
-        res = a; 
+    if (num1 >= 0) {
+        while (num1 >= num2) {
+            num1 = num1 - num2;
+        }
+        res = num1;
     } else {
-        while (a <= res) {
-            res = res - Abs(b); 
-        } 
-        res = a - res;
-    } 
+        while (num1 <= res) {
+            res = res - Abs(num2);
+        }
+        res = num1 - res;
+    }
     return res;
-} 
+}
  
-int Sign(int a) {
-    if (x > 0) {
+int Sign(int num) {
+    if (num > 0) {
         return 1;
-    } else if (x < 0) {
+    } else if (num < 0) {
         return -1;
     } else {
         return 0;
-    } 
-} 
- 
-int Square(int a) {
-    return a * a;
+    }
+}
+
+int Square(int num) {
+    return num * num;
 }
 
 int CheckZone(Point p) {
@@ -100,7 +100,7 @@ int Task() {
     int ik = 0;
     int jk = 0;
     int lk = 0;
-    for (int cnt = 0, cnt < MAX_ITERATIONS, ++cnt) {
+    for (int cnt = 0; cnt < MAX_ITERATIONS; ++cnt) {
         CheckZone(p);
         ik = p.x;
         jk = p.y;

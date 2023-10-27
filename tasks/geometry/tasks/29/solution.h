@@ -2,14 +2,14 @@
 
 #include <stdio.h>
 
-const int MAX_ITERATIONS = 50 
-const int THIRTY = 30 
-const int ONE = 1 
-const int SEMIAXIS_X = 10 
-const int SEMIAXIS_Y = 5 
-const int I_0 = -7 
-const int J_0 = -19 
-const int L_0 = 4
+const int MAX_ITERATIONS = 50;
+const int THIRTY = 30;
+const int ONE = 1;
+const int SEMIAXIS_X = 10;
+const int SEMIAXIS_Y = 5;
+const int I_0 = -7;
+const int J_0 = -19;
+const int L_0 = 4;
 
 typedef struct {
     int x;

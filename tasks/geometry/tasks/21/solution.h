@@ -8,7 +8,7 @@ const int TWENTY = 20;
 const int TEN = 10;
 const int MINUS_TEN = -10;
 const int MINUS_ONE = -1;
-const int FIFTY = 50;
+const int MAX_ITERATION = 50;
 
 typedef struct {
     int x;
@@ -64,14 +64,14 @@ int Sign(int a) {
 
 int CheckZone(Point p) {
     // Write a code here that checks whether a point belongs to a given area
-    int success = 0;
+    int is_local_success = 0;
     if (p.y >= p.x + TEN && p.y <= MINUS_ONE * p.x + TEN && p.x >= MINUS_TEN) {
         printf("Tочка с координатами %d %d попадает в область\n", p.x, p.y);
-        success = 1;
+        is_local_success = 1;
     } else {
         printf("Точка с координатами %d %d НЕ попадает в область\n", p.x, p.y);
     }
-    return success;
+    return is_local_success;
 }
 
 int Task() {
@@ -80,13 +80,14 @@ int Task() {
     p.x = MINUS_TWELVE;
     p.y = MINUS_TWENTY_TWO;
     int l = ELEVEN;
-    int global_success = 0;
+    int is_global_success = 0;
     int temp_x = 0;
     int temp_y = 0;
     int temp_l = 0;
-    for (int i = 0; i < FIFTY; ++i) {
+    for (int i = 0; i < MAX_ITERATION; ++i) {
         if (CheckZone(p) == 1) {
-            global_success = 1;
+            is_global_success = 1;
+            break;
         }
         temp_x = p.x;
         temp_y = p.y;
@@ -97,7 +98,7 @@ int Task() {
               Mod(Max(Abs(temp_x - temp_l), Abs(i - TWENTY)), TWENTY) + TWENTY;
         l = Mod(temp_x, TEN) * Mod(temp_y, TEN) + Mod(temp_l, TEN);
     }
-    if (not global_success) {
+    if (!is_global_success) {
         printf("Точка не попала в область за 50 итераций.\n");
     }
     return 0;

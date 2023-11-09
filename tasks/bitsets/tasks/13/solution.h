@@ -14,7 +14,7 @@ int Task() {
         if (c == EOF) {
             break;
         }
-        if (c >= 'a' || c == 'e' || c == 'o' || c == 'i' || c == 'u' || c == 'y') {
+        if (c == 'a' || c == 'e' || c == 'o' || c == 'i' || c == 'u' || c == 'y') {
             bitset = bitset | (1u << (c - 'a'));
         }
     }

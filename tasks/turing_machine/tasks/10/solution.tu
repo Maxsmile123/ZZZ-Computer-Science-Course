@@ -117,45 +117,39 @@ back2, ,<,back2
 back2,f,>,cp
 
 st5,f,>,st5
-st5, ,<,end
-st5,1,f,st51
-st5,0,f,st52
+st5,1,>,st5
+st5,0,>,st5
+st5, ,<,cop
 
-st51,1,<,st51
-st51,0,<,st51
-st51,f,<,st51
-st51,A,>,st511
+cop,0, ,cop0
+cop,1, ,cop1
+cop,f, ,mv_l
 
-st52,1,<,st52
-st52,0,<,st52
-st52,f,<,st52
-st52,A,>,st522
+cop0,1,<,cop0
+cop0,0,<,cop0
+cop0, ,<,cop0
+cop0,f,<,cop0
+cop0,A,>,pr0
 
-r,1,>,st5
-r,0,>,st5
+cop1,1,<,cop1
+cop1, ,<,cop1
+cop1,0,<,cop1
+cop1,f,<,cop1
+cop1,A,>,pr1
 
-st511,f,1,r
-st511,1,>,st511
-st511,0,>,st511
+pr0,f,0,st5
+pr0,1,>,pr0
+pr0,0,>,pr0
+pr1,f,1,st5
+pr1,0,>,pr1
+pr1,1,>,pr1
 
-st522,f,0,r
-st522,1,>,st522
-st522,0,>,st522
-
-end,f, ,l
+mv_l, ,<,end
 end,1,<,end
 end,0,<,end
-end,&,<,end
-l, ,<,end
-end,A, ,l
-end, ,>,end2
+end,A, ,mv_r
 
-end2,1,>,end2
-end2,0,>,end2
-end2,&,>,end2
-end2, ,>,end3
-
-end3,1,>,end3
-end3,0,>,end3
-end3,&,>,end3
-end3, ,#,00
+mv_r, ,>,fin
+fin,1,>,fin
+fin,0,>,fin
+fin, ,#,fin

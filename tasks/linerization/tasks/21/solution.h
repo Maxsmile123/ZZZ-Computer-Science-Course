@@ -7,7 +7,7 @@
 
 typedef int32_t** Matrix;
 
-int32_t** MatrixGeneration(Matrix matrix, size_t* len, size_t* width) {
+Matrix MatrixGeneration(Matrix matrix, size_t* len, size_t* width) {
     for (size_t i = 0; i < *width; ++i) {
         for (size_t j = 0; j < *len; ++j) {
             matrix[i][j] = rand() % 1000;
@@ -96,6 +96,13 @@ void PrintMassive(int32_t* new_massive, size_t len) {
     }
 }
 
+Matrix MemoryCleaner(Matrix matrix, size_t* width) {
+    for (size_t i = 0; i < *width; ++i) {
+        free(matrix[i]);
+    }
+    return matrix;
+}
+
 int Task() {
     size_t len_matrix = 0;
     scanf("%lu", &len_matrix);
@@ -111,5 +118,7 @@ int Task() {
     MyTask(matrix, new_massive, &len_matrix, &width_matrix);
     printf("\n\n\n");
     PrintMassive(new_massive, len_matrix * width_matrix);
+    MemoryCleaner(matrix, &width_matrix);
+    free(matrix);
     return 0;
 }

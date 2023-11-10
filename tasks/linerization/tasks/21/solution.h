@@ -120,5 +120,6 @@ int Task() {
     PrintMassive(new_massive, len_matrix * width_matrix);
     MemoryCleaner(matrix, &width_matrix);
     free(matrix);
+    free(new_massive);
     return 0;
 }

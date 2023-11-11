@@ -1,0 +1,1 @@
+add_catch(geometry15 test.cpp)

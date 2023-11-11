@@ -1,0 +1,1 @@
+add_catch(geometry27 test.cpp)

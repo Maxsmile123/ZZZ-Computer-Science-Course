@@ -1,0 +1,1 @@
+add_catch(integers22 test.cpp)

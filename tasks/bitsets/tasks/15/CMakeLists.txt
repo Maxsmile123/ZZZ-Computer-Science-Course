@@ -1,0 +1,1 @@
+add_catch(bitsets15 test.cpp)

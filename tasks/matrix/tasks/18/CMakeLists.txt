@@ -1,0 +1,1 @@
+add_catch(matrix18 test.cpp)

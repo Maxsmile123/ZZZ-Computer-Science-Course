@@ -1,0 +1,64 @@
+- task:    linux
+  start:    week0
+  deadline: start + 2 week
+  score: 150
+
+- task:    turing machine
+  start:    week1
+  deadline: start + 4 week
+  score: 200
+
+- task:    turing diagrams
+  start:    week1
+  deadline: start + 4 week
+  score: 200
+
+- task:    nam
+  start:    week1
+  deadline: start + 4 week
+  score: 150
+
+- task:    geometry
+  start:    week2
+  deadline: start + 2 week
+  score: 100
+
+- task:    integers
+  start:    week3
+  deadline: start + 2 week
+  score: 150
+
+- task:    bitsets
+  start:    week4
+  deadline: start + 3 week
+  score: 150
+
+- task:    taylor
+  start:    week5
+  deadline: start + 3 week
+  score: 200
+
+- task:    numerical methods
+  start:    week6
+  deadline: start + 3 week
+  score: 200
+
+- task:    linerization
+  start:    week7
+  deadline: start + 3 week
+  score: 250
+
+- task:    matrix
+  start:    week7
+  deadline: start + 3 week
+  score: 150
+
+- task:    finite state machine
+  start:    week9
+  deadline:  start + 4 week
+  score: 350
+
+- task:    latex
+  start:    week10
+  deadline: start + 2 week
+  score: 50

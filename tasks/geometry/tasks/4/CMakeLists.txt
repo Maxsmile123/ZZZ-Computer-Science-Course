@@ -1,0 +1,1 @@
+add_catch(geometry4 test.cpp)

@@ -1,0 +1,1 @@
+add_catch(geometry16 test.cpp)

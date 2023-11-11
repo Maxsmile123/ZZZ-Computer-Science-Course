@@ -1,0 +1,8 @@
+add_subdirectory(bitsets)
+add_subdirectory(finite_state_machine)
+add_subdirectory(geometry)
+add_subdirectory(integers)
+add_subdirectory(linerization)
+add_subdirectory(matrix)
+add_subdirectory(numerical_methods)
+add_subdirectory(taylor)

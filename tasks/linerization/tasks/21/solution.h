@@ -96,11 +96,14 @@ void PrintMassive(int32_t* new_massive, size_t len) {
     }
 }
 
-Matrix MemoryCleaner(Matrix matrix, size_t* width) {
+void MemoryCleaner(Matrix matrix, size_t* width, int32_t* new_massive) {
     for (size_t i = 0; i < *width; ++i) {
         free(matrix[i]);
     }
-    return matrix;
+    free(matrix);
+    free(new_massive);
+    matrix = NULL;
+    new_massive = NULL;
 }
 
 int Task() {
@@ -118,8 +121,6 @@ int Task() {
     MyTask(matrix, new_massive, &len_matrix, &width_matrix);
     printf("\n\n\n");
     PrintMassive(new_massive, len_matrix * width_matrix);
-    MemoryCleaner(matrix, &width_matrix);
-    free(matrix);
-    free(new_massive);
+    MemoryCleaner(matrix, &width_matrix, new_massive);
     return 0;
 }

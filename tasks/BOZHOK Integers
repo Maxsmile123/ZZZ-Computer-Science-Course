@@ -1,0 +1,26 @@
+#include <stdbool.h>
+#include <stdio.h>
+
+bool check_digits(int number) {
+    int digit = number % 10;
+    number /= 10;
+    while (number > 0) {
+        int next_digit = number % 10;
+        if (digit == next_digit) {
+            return false;
+        }
+        digit = next_digit;
+        number /= 10;
+    }
+    return true;
+}
+
+int Task() {
+    int number = 646564;
+    if (check_digits(number)) {
+        printf("YES");
+    } else {
+        printf("NO");
+    }
+    return 0;
+}

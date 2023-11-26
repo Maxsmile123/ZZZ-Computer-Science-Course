@@ -28,29 +28,29 @@
   deadline: start + 2 week
   score: 150
 
-- task:    taylor
+- task:    bitsets
   start:    week4
-  deadline: start + 2 week
-  score: 200
+  deadline: start + 3 week
+  score: 150
 
-- task:    numerical methods
+- task:    taylor
   start:    week5
   deadline: start + 3 week
   score: 200
 
-- task:    linerization
+- task:    numerical methods
   start:    week6
+  deadline: start + 3 week
+  score: 200
+
+- task:    linerization
+  start:    week7
   deadline: start + 3 week
   score: 250
 
 - task:    matrix
-  start:    week6
+  start:    week7
   deadline: start + 3 week
-  score: 150
-
-- task:    bitsets
-  start:    week8
-  deadline: start + 2 week
   score: 150
 
 - task:    finite state machine

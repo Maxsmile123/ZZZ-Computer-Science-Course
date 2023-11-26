@@ -8,7 +8,9 @@ typedef enum states {
     // struct with states for your KA
 } State;
 
+
+
 int Task() {
-    // write your solution here
+    // write your solution here!!
     return 0;
 }

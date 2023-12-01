@@ -1,0 +1,13 @@
+counter totalAmount
+,MAX_SIZE, 
+
+_userInputcalculateSum
+
+NumIterations MAX_VALUE     TotalAmount
+
+
+
+
+MAX_VALUE _UserInput, _UserInput(osk)case
+
+CalculateSum

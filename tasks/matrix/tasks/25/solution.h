@@ -36,9 +36,9 @@ Matrix ReadMatrixFromFile(const char *file_path, int32_t *n) {
 }
 
 // Функция вывода матрицы
-void MatrixOutput(Matrix matrix, int32_t n, bool *rowsToRemove) {
+void MatrixOutput(Matrix matrix, int32_t n, bool *rows_to_remove) {
     for (int i = 0; i < n; i++) {
-        if (!rowsToRemove[i]) {
+        if (!rows_to_remove[i]) {
             for (int j = 0; j < n; j++) {
                 printf("%d ", matrix[i][j]);
             }
@@ -59,10 +59,10 @@ void FreeMatrix(Matrix matrix, int32_t n) {
 // Функция для удаления строк, которые содержат минимальное значение
 bool *RemovingRowsWithMinValue(Matrix matrix, int32_t n) {
     int32_t min_value = INT32_MAX;
-    bool *rowsToRemove = (bool *)malloc(n * sizeof(bool));
+    bool *rows_to_remove = (bool *)malloc(n * sizeof(bool));
 
     for (int i = 0; i < n; i++) {
-        rowsToRemove[i] = false;
+        rows_to_remove[i] = false;
     }
 
     for (int i = 0; i < n; i++) {
@@ -76,13 +76,13 @@ bool *RemovingRowsWithMinValue(Matrix matrix, int32_t n) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             if (matrix[i][j] == min_value) {
-                rowsToRemove[i] = true;
+                rows_to_remove[i] = true;
                 break;
             }
         }
     }
 
-    return rowsToRemove;
+    return rows_to_remove;
 }
 
 int Task() {
@@ -95,23 +95,23 @@ int Task() {
     ReadMatrixFromFile(file_path, &n);
 
     // Создаем временный массив, в котором все значения false
-    bool *tempRowsToRemove = (bool *)calloc(n, sizeof(bool));
+    bool *temp_rows_to_remove = (bool *)calloc(n, sizeof(bool));
 
     // Выводим исходную матрицу
     printf("Исходная матрица:\n");
-    MatrixOutput(matrix, n, tempRowsToRemove);
+    MatrixOutput(matrix, n, temp_rows_to_remove);
 
     // Освобождаем временный массив
-    free(tempRowsToRemove);
+    free(temp_rows_to_remove);
 
     // Меняем матрицу, удаляем ненужные строки
-    bool *rowsToRemove = RemovingRowsWithMinValue(matrix, n);
+    bool *rows_to_remove = RemovingRowsWithMinValue(matrix, n);
 
     // Выводим преобразованную матрицу
     printf("Преобразованная матрица:\n");
-    MatrixOutput(matrix, n, rowsToRemove);
+    MatrixOutput(matrix, n, rows_to_remove);
 
     FreeMatrix(matrix, n);
-    free(rowsToRemove);
+    free(rows_to_remove);
     return 0;
 }

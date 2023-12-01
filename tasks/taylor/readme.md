@@ -58,7 +58,7 @@ NO
 - $$a\neq b \rightarrow abs(a - b) \geq EPS;$$
 
 ## Ряд Тейлора
-- [Если впервые про это слышите](https://www.geeksforgeeks.org/taylor-series/)
+- [Если впервые про это слышите](https://courses.grainger.illinois.edu/cs357/fa2019/references/ref-3-taylor/)
 
 Само задание заключается в том, что необходимо посчитать значение функции двумя методами: при помощи готовой функции и при помощи ряда Тейлора для этой функции.
 

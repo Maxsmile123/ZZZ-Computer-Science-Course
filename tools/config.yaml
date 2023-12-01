@@ -35,9 +35,7 @@ task_descriptions: {
     data_path: ./tools/data/11.txt,
     template_solution: {
       fsm.h: fsm.h,
-      reg.h: reg.h,
       fsm.cpp: test_fsm.cpp,
-      reg.cpp: test_reg.cpp
     }
   },
   integers: {

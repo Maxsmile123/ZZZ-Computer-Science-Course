@@ -53,10 +53,6 @@ jobs:
           for file in ${LIST_CHECK_FILES[@]}
           do
             List_run_test+=($(echo $file | cut -d/ -f2)$(echo $file | cut -d/ -f4))
-            if [ "$(echo $file | cut -d/ -f2)" = "finite_state_machine" ]
-            then
-              List_run_test+=("regex$(echo $file | cut -d/ -f4)")
-            fi
           done
           echo "${List_run_test[@]}"
           List_run_test=$(echo ${List_run_test[@]} | tr ' ' '\n' | sort | uniq)

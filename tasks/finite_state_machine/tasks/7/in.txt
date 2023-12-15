@@ -1,0 +1,11 @@
+A pointer that poin732ts	 	
+ to an object re			prese6nts the addr
+ess of the first 62qb	yte in memory occupied by
+ the object. A pointer past the 
+
+end of an object represents t		he address of the first byte in memory after the 
+end of the 5236storegsage occu
+pied by the o	bject.
+segseg 				hresgeaf235 1`\,!@%
+Note that two pointers
+ that repr214125197aunsfmress may nonetheless have different values.

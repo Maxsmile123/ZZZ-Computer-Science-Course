@@ -37,7 +37,7 @@ Ld TylorCounting(Ld x, int* counter_of_iterations) {
 }
 
 void Output(Ld tylor, Ld sinus, int counter, Ld x) {
-    printf("|  %.2Lf  | %.20Lf | %.20f |     %d     |\n", x, tylor, sinus, counter);
+    printf("|  %.2Lf  | %.20Lf | %.20Lf |     %d     |\n", x, tylor, sinus, counter);
 }
 
 void PrintDashs(int n) {

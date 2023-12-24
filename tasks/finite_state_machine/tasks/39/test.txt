@@ -1,0 +1,2 @@
+00xdc6c0080 0x0xdc006c80 0xaa00aa00 0x87650080xffffffff
+answer: 3 negative hex numbers finded!       ^ try to put extra 0 here (answer: 4)

@@ -15,4 +15,5 @@ include(Cmake/TestSolution.cmake)
 include(Cmake/BuildFlags.cmake)
 
 add_subdirectory(tasks)
+add_subdirectory(examples)
 include(Cmake/FindCatch.cmake)

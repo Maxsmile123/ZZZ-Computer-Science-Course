@@ -270,7 +270,7 @@ class Repository:
                     self.others_descriptions[task]
                 )
 
-def main():
+def get_args():
     parser = argparse.ArgumentParser(description='default all targets is off')
     parser.add_argument(
         '-c',
@@ -295,6 +295,11 @@ def main():
         help='Generate description for vars. Need full data directory. "-" is seperator')
 
     args = parser.parse_args()
+    return args
+
+
+def main():
+    args = get_args()
     repo = Repository('tasks', './tools/config.yaml')
     repo.generate_repository(args)
 

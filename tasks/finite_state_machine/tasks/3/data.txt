@@ -1,0 +1,12 @@
+Var a,b:Integer;
+  Begin
+	a:=0;
+	b:=10;
+	for a:=1 to 10 do
+	  begin
+	    Write (a*b, ' ');
+	  end;
+	{
+        this is comment. we like some nasty comments. sonicxx
+    }
+  End.

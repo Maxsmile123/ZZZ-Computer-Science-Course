@@ -1,0 +1,5 @@
+Simple Random Sampling:
+In this 100 type of sampling, each element from the 1 population
+has an equal 10000000 chance of being selected.
+Typically, a random generator is used 10 to select
+elements 1010101010 without any 1111111 prior division of the population.

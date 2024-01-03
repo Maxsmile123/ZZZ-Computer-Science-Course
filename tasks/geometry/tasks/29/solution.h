@@ -1,4 +1,4 @@
-ragma once
+agma once
 
 #include <stdio.h>
 
@@ -27,13 +27,13 @@ int Max_2(int num1, int num2) {
 int Max_3(int num1, int num2, int num3) {
     if ((num1 >= num2) && (num1 >= num3)) {
         return num1;
-    } else if((num2 >= num1) && (num2 >= num3)) {
+    } else if ((num2 >= num1) && (num2 >= num3)) {
         return num2;
     } else {
         return num3;
     }
-} 
- 
+}
+
 int Min(int num1, int num2) {
     if (num1 < num2) {
         return num1;
@@ -41,7 +41,7 @@ int Min(int num1, int num2) {
         return num2;
     }
 }
- 
+
 int Abs(int num) {
     if (num > 0) {
         return num;
@@ -49,7 +49,7 @@ int Abs(int num) {
         return num * -1;
     }
 }
- 
+
 int Mod(int num1, int num2) {
     int res = 0;
     if (num1 >= 0) {
@@ -65,7 +65,7 @@ int Mod(int num1, int num2) {
     }
     return res;
 }
- 
+
 int Sign(int num) {
     if (num > 0) {
         return 1;

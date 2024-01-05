@@ -1,4 +1,47 @@
+#pragma once
 #include <stdio.h>
+
+int Sign(int x) {
+    if (x > 0) {
+        return 1;
+    } else if (x < 0) {
+        return -1;
+    } else {
+        return 0;
+    }
+}
+
+int Mod(int x, int y) {
+    if (y != 0) {
+        return x % y;
+    } else {
+        return 0;
+    }
+}
+
+int Max(int x, int y) {
+    if (x > y) {
+        return x;
+    } else {
+        return y;
+    }
+}
+
+int Min(int x, int y) {
+    if (x < y) {
+        return x;
+    } else {
+        return y;
+    }
+}
+
+int Abs(int x) {
+    if (x > 0) {
+        return x;
+    } else {
+        return x * (-1);
+    }
+}
 
 const int MAX_ITERATIONS = 50;
 const int I_0 = 18;
@@ -18,51 +61,13 @@ typedef struct {
 } Point;
 
 int CheckZone(Point p) {
-    return ((((p.x - X_0) * (p.x - X_0) + (p.y - Y_0) * (p.y - Y_0) <= R_BIG * R_BIG) &&
-    ((p.x - X_0) * (p.x - X_0) + (p.y - Y_0) * (p.y - Y_0) >= R_SMALL * R_SMALL)));
-    }
-
-int Max(int x, int y) {
-    if (x > y) {
-        return x;
-    } else {
-        return y;
-    }
+    return ((p.x - X_0) / SquareDegree(SEMI_MAJOR_AXIS)) + ((p.y - Y_0) / SquareDegree(SEMI_MINOR_AXIS)) == ONE;
 }
 
-int Mod(int x, int y) {
-    if (y != 0) {
-        return x % y;
-    } else {
-        return 0;
-    }
-}
+int CheckZone(Point p) {
+    return (((p.x - X_0) * (p.x - X_0) + (p.y - Y_0) * (p.y - Y_0) <= R_BIG * R_BIG) &&
+            ((p.x - X_0) * (p.x - X_0) + (p.y - Y_0) * (p.y - Y_0) >= R_SMALL * R_SMALL));
 
-int Min(int x, int y) {
-    if (x < y) {
-        return x;
-    } else {
-        return y;
-    }
-}
-
-int Sign(int x) {
-    if (x > 0) {
-        return 1;
-    }
-    if (x < 0) {
-        return -1;
-    } else {
-        return 0;
-    }
-}
-
-int Abs(int x) {
-    if (x > 0) {
-        return x;
-    } else {
-        return x * (-1);
-    }
 }
 
 int Task() {
@@ -75,7 +80,7 @@ int Task() {
     int flag = 0;
 
     for (int k = 1; k <= MAX_ITERATIONS; ++k) {
-        if (CheckZone(p)){
+        if (CheckZone(p)) {
             flag = 1;
             printf("The point with the coordinates '%d', '%d' hit into the zone", p.x, p.y);
             break;
@@ -92,4 +97,3 @@ int Task() {
 
     return 0;
 }
-

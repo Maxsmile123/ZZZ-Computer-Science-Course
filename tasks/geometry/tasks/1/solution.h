@@ -63,7 +63,6 @@ typedef struct {
 int CheckZone(Point p) {
     return (((p.x - X_0) * (p.x - X_0) + (p.y - Y_0) * (p.y - Y_0) <= R_BIG * R_BIG) &&
             ((p.x - X_0) * (p.x - X_0) + (p.y - Y_0) * (p.y - Y_0) >= R_SMALL * R_SMALL));
-
 }
 
 int Task() {

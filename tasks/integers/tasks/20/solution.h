@@ -30,11 +30,13 @@ int Task() {
     // write your solution here
     int64_t number = NUMBER;
     int64_t last_digit = number % TEN;
+    int64_t first_digit = number / Degree(TEN, Length(number) - 2);
     number /= TEN;
     int64_t last_but_one_digit = number % TEN;
-    number %= Degree(TEN, Length(number) - 2);
+    number %= Degree(TEN, Length(number) - 3);
     number -= last_but_one_digit;
     number += last_digit;
+    number += first_digit * Degree(TEN, Length(number) - 1);
     printf("%ld\n", number);
     return 0;
 }

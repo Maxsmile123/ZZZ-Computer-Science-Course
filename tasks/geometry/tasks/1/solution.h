@@ -1,4 +1,3 @@
-#pragma once
 #include <stdio.h>
 
 const int MAX_ITERATIONS = 50;
@@ -19,11 +18,9 @@ typedef struct {
 } Point;
 
 int CheckZone(Point p) {
-    
     return ((((p.x - X_0) * (p.x - X_0) + (p.y - Y_0) * (p.y - Y_0) <= R_BIG * R_BIG) &&
-            ((p.x - X_0) * (p.x - X_0) + (p.y - Y_0) * (p.y - Y_0) >= R_SMALL * R_SMALL)));
+    ((p.x - X_0) * (p.x - X_0) + (p.y - Y_0) * (p.y - Y_0) >= R_SMALL * R_SMALL)));
     }
-
 
 int Max(int x, int y) {
     if (x > y) {
@@ -40,8 +37,6 @@ int Mod(int x, int y) {
         return 0;
     }
 }
-
-
 
 int Min(int x, int y) {
     if (x < y) {
@@ -79,7 +74,6 @@ int Task() {
     p.y = j;
     int flag = 0;
 
-
     for (int k = 1; k <= MAX_ITERATIONS; ++k) {
         if (CheckZone(p)){
             flag = 1;
@@ -90,9 +84,7 @@ int Task() {
         i = Mod(p.x * Max(p.x, l), THIRTY) + Mod(p.y * Min(p.x, l), TWENTY) + k;
         j = Min(p.x, Max(p.y, Min(l, Max(p.x - l, p.y - l))));
         l = Sign(k - 10) * Abs(p.x - p.y + l - k);
-
     }
-
 
     if (flag == 0) {
         printf("The point did not hit the area in 50 iterations\n");
@@ -100,3 +92,4 @@ int Task() {
 
     return 0;
 }
+

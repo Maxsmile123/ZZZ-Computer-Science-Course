@@ -4,10 +4,10 @@
 #include <stdio.h>
 
 int64_t Sign(int64_t x) {
-    if (x > 0) {
-        return 1;
-    } else if (x < 0) {
+    if (x < 0) {
         return -1;
+    } else {
+        return 1;
     }
 }
 

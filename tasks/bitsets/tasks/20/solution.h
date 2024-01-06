@@ -5,7 +5,6 @@
 #include <stdint.h>
 #include <stdio.h>
 
-
 typedef uint32_t Bitset;
 
 const Bitset SET = 0;

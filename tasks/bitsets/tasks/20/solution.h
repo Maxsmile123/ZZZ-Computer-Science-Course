@@ -1,9 +1,10 @@
 #pragma once
 
 #include <ctype.h>
+#include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
-#include <stdbool.h>
+
 
 typedef uint32_t Bitset;
 

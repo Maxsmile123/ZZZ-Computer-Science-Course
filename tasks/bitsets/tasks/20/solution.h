@@ -25,7 +25,7 @@ int Task() {
     char alpha = 0;
     Bitset new_set = SET;
     while (true) {
-        alpha = getchar();
+        alpha = (char)getchar();
         if (isalpha((char)(alpha))) {
             new_set = new_set | (1 << (alpha - 'a'));
         } else if (!isalpha((char)(alpha)) && (alpha != EOF)) {

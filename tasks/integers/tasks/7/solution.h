@@ -12,7 +12,7 @@ int64_t Sign(int64_t x) {
 }
 
 int Task() {
-    int64_t num;
+    int64_t num = 0;
     while (scanf("%ld", &num) == 1) {
         if (Sign(num) == 1) {
             printf("%ld\n", num);

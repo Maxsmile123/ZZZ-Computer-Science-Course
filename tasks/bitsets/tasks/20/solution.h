@@ -17,8 +17,8 @@ Bitset check(Bitset a) {
 }
 
 int Task() {
-    Bitset only_vowels = (((1 << ('a' - 'a')) | (1 << ('e' - 'a'))) | (1 << ('i' - 'a'))
-    | (1 << ('o' - 'a')) | (1 << ('u' - 'a')) | (1 << ('y' - 'a')));
+    Bitset only_vowels = (((1 << ('a' - 'a')) | (1 << ('e' - 'a'))) | (1 << ('i' - 'a')) | (1 << ('o' - 'a')) |
+                          (1 << ('u' - 'a')) | (1 << ('y' - 'a')));
     int flag = 0;
     char alpha = 0;
     Bitset new_set = set;
@@ -37,11 +37,9 @@ int Task() {
             break;
         }
     }
-    
     if (flag == 0) {
         printf("NO");
-    }
-    else {
+    } else {
         printf("YES");
     }
     return 0;

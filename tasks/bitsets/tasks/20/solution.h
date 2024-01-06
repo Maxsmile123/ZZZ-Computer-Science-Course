@@ -1,13 +1,15 @@
 #pragma once
 
+#include <ctype.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 typedef uint32_t Bitset;
 
-const Bitset set = 0;
+const Bitset SET = 0;
 
-Bitset check(Bitset a) {
+Bitset Check(Bitset a) {
     Bitset count = 0;
     while (a) {
         count += a & 1;
@@ -21,17 +23,17 @@ int Task() {
                           (1 << ('u' - 'a')) | (1 << ('y' - 'a')));
     int flag = 0;
     char alpha = 0;
-    Bitset new_set = set;
-    while (1) {
+    Bitset new_set = SET;
+    while (true) {
         alpha = getchar();
-        if (isalpha((char)alpha)) {
+        if (isalpha((char)(alpha))) {
             new_set = new_set | (1 << (alpha - 'a'));
-        } else if (!isalpha((char)alpha) && (alpha != EOF)) {
-            if (check((new_set | only_vowels) ^ only_vowels) >= 1) {
+        } else if (!isalpha((char)(alpha)) && (alpha != EOF)) {
+            if (Check((new_set | only_vowels) ^ only_vowels) >= 1) {
                 flag = 1;
                 break;
             } else {
-                new_set = set;
+                new_set = SET;
             }
         } else if (alpha == EOF) {
             break;

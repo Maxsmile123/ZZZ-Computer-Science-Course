@@ -43,7 +43,9 @@ int Task() {
 
     // проверяем соседние слова
     int found_anagrams = 0;
-    for (int i = 1; i < sizeof(words) / sizeof(words[0]); i++) {
+    size_t num_words = sizeof(words) / sizeof(words[0]);  // calculate the number of words
+
+    for (size_t i = 1; i < num_words; i++) {
         if (AreAnagrams(words[i - 1], words[i])) {
             found_anagrams = 1;
             break;

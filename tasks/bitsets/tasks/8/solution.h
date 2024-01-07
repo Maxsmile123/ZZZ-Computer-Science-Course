@@ -26,7 +26,7 @@ bool IsVowel(char letter) {
     return VOWELS & (1u << (ToLower(letter) - 'a'));
 }
 
-int main() {
+int Task() {
     char current_char = 0;
     char previous_char = 0;
     Bitset is_relevant_word = 0;

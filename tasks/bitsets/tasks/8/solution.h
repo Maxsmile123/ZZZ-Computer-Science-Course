@@ -31,8 +31,7 @@ int main() {
     char previous_char = 0;
     Bitset is_relevant_word = 0;
     bool is_word_found = false;
-    current_char = getchar();
-    while (current_char != EOF) {
+    while ((current_char = (char)getchar()) != EOF) {
         if (IsAlpha(current_char)) {
             if (!IsAlpha(previous_char) && (IsVowel(current_char))) {
                 is_relevant_word = is_relevant_word | 1;
@@ -47,7 +46,6 @@ int main() {
             is_relevant_word = 0;
         }
         previous_char = current_char;
-        current_char = getchar();
     }
     if (is_word_found) {
         printf("There is a word starts and ends with vowels");

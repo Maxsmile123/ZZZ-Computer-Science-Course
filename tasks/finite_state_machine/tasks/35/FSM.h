@@ -1,14 +1,24 @@
-#pragma once
-
 #include <stdio.h>
 
-typedef enum states {
-    S0,
-    S1
-    // struct with states for your KA
-} State;
+#include "fsm_work.h"
+#include "shared_header.h"
+
+// (?<!\d)[1-7]\d(?!\d)
 
 int Task() {
-    // write your solution here
+
+    FILE* file = fopen("input.txt", "r");
+
+    if (file == NULL) {
+        printf("Файл не открылся\n");
+        return 0;
+    }
+
+    struct Machine machine;
+
+    Start(&machine, file);
+
+    fclose(file);
+
     return 0;
 }

@@ -1,5 +1,3 @@
-#pragma once
-
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -18,7 +16,9 @@ bool IsAlpha(char letter) {
 
 bool ToLower(char letter) {
     if ('A' <= letter && letter <= 'Z') {
-        return letter + 32; 
+        return letter + 32;
+    } else {
+        return letter;
     }
 }
 
@@ -26,7 +26,7 @@ bool IsVowel(char letter) {
     return VOWELS & (1u << (ToLower(letter) - 'a'));
 }
 
-int Task() {
+int main() {
     char current_char = 0;
     char previous_char = 0;
     Bitset is_relevant_word = 0;

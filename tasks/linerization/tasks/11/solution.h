@@ -15,7 +15,7 @@ Matrix CreatingMatrix(int32_t n, int32_t m) {
 }
 
 // заполнение матрицы исходными значениями
-void OriginalMatrix(Matrix matrix, int32_t n, int32_t m) {
+Matrix OriginalMatrix(Matrix matrix) {
     matrix[0][0] = 16;
     matrix[0][1] = 15;
     matrix[0][2] = 11;
@@ -32,43 +32,41 @@ void OriginalMatrix(Matrix matrix, int32_t n, int32_t m) {
     matrix[3][1] = 6;
     matrix[3][2] = 2;
     matrix[3][3] = 1;
+    return matrix;
 }
 
-// преобразование двумерной матрицы в одномерный массив с числами от 1 до n*m
+// преобразовние двумерной матрицы в одномерный массив
 int32_t* OneDimensionalArray(Matrix matrix, int32_t n, int32_t m) {
     int32_t* linearized_matrix = (int32_t*)malloc(n * m * sizeof(int32_t));
 
-    int32_t counter = 1;
     for (int32_t i = 0; i < n; ++i) {
         for (int32_t j = 0; j < m; ++j) {
-            linearized_matrix[i * m + j] = counter++;
+            linearized_matrix[i * m + j] = matrix[i][j];
         }
     }
 
     return linearized_matrix;
 }
 
-// вывод матрицы и одномерного массива
+// вывод матриц
 void AnsweringMatrix(Matrix matrix, int32_t* arr, int32_t n, int32_t m) {
-
     printf("матрица в двумерном массиве\n");
     for (int32_t i = 0; i < n; ++i) {
         for (int32_t j = 0; j < m; ++j) {
-            printf("%d ", matrix[i][j]);
+            printf("%2d ", matrix[i][j]); // %2d для выравнивания двузначных чисел
         }
         printf("\n");
     }
 
     printf("матрица в одномерном массиве\n");
     for (int32_t i = 0; i < n * m; ++i) {
-        printf("%d ", arr[i]);
+        printf("%2d ", arr[i]);
     }
     printf("\n");
 }
 
 // освобождение памяти, выделенной под матрицу
 void MatrixFree(Matrix matrix, int32_t n) {
-
     for (int32_t i = 0; i < n; ++i) {
         free(matrix[i]);
     }
@@ -81,7 +79,7 @@ int Task() {
     int32_t m = 4;
 
     Matrix matrix = CreatingMatrix(n, m);
-    OriginalMatrix(matrix, n, m);
+    matrix = OriginalMatrix(matrix);
     int32_t* arr = OneDimensionalArray(matrix, n, m);
 
     AnsweringMatrix(matrix, arr, n, m);

@@ -15,7 +15,7 @@ Matrix CreatingMatrix(int32_t n, int32_t m) {
 }
 
 // заполнение матрицы исходными значениями
-Matrix OriginalMatrix(Matrix matrix) {
+void OriginalMatrix(Matrix matrix) {
     matrix[0][0] = 16;
     matrix[0][1] = 15;
     matrix[0][2] = 11;
@@ -32,7 +32,6 @@ Matrix OriginalMatrix(Matrix matrix) {
     matrix[3][1] = 6;
     matrix[3][2] = 2;
     matrix[3][3] = 1;
-    return matrix;
 }
 
 // преобразование двумерной матрицы в одномерный массив с числами от 1 до n*m

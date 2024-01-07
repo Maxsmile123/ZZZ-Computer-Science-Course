@@ -1,11 +1,10 @@
 #pragma once
 
+#include <ctype.h>
 #include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <string.h>
-#include <stdint.h>
-#include <ctype.h>
-
 
 #include "fsm_structs.h"
 
@@ -28,8 +27,7 @@ void Transition(Machine* machine, FILE* file) {
     while (machine->current_state != END) {
         char word[255] = {0};
         if (machine->current_state == SCAN) {
-            char symbol =
-                    ' ';
+            char symbol = ' ';
             char is_eof = 0;
             for (int i = 0; i < 255; ++i) {
                 symbol = (char)fgetc(file);

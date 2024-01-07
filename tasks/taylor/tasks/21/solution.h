@@ -17,7 +17,7 @@ long double Factorial(int32_t x) {
 }
 
 // функция для вывода заголовка таблицы
-void tableTitle() {
+void TableTitle() {
     printf("       Taylor series values table for f(x) = ((x^2 / 4) + (x / 2) + 1) * e^x/2\n");
     printf(" ----------------------------------------------------------------------------------\n");
     printf("|    X   |    Taylor series    |      Function       | Iters |      Difference     |\n");
@@ -25,15 +25,15 @@ void tableTitle() {
 }
 
 // функция вывода строки в таблицу для заданных значений "x"
-void lineOutput(long double x, long double seriesSum, int iter) {
+void LineOutput(long double x, long double seriesSum, int iter) {
     printf("| %6.2Lf | % 19.15Lf | % 19.15Lf | %5d | % 19.15Lf |\n", x, seriesSum, Func(x), iter,
-           fabsl(Func(x) - seriesSum));
+           fabsl(Func(x) - series_sum));
 }
 
 int Task() {
     // данные границы из условия
-    const long double startA = 0.1;
-    const long double endB = 0.6;
+    const long double start_a = 0.1;
+    const long double end_b = 0.6;
 
     // задаем кол-во итераций для n
     int32_t n = 10;
@@ -41,27 +41,27 @@ int Task() {
     int32_t m = 50;
 
     // точность вычислений
-    const long double calculationAccuracy = LDBL_EPSILON * m;
+    const long double calculation_accuracy = LDBL_EPSILON * m;
     // шаг итераций
-    const long double iterationStep = (endB - startA) / n;
+    const long double iteration_step = (end_b - start_a) / n;
 
     // вывод заголовка таблицы
-    tableTitle();
+    TableTitle();
 
-    for (long double x = startA; x <= endB; x += iterationStep) {
+    for (long double x = start_a; x <= end_b; x += iteration_step) {
         // сумма ряда
-        long double seriesSum = 0;
+        long double series_sum = 0;
         // кол-во итераций
         int iterations = 0;
 
         // вычисление ряда Тейлора
-        while (fabsl(seriesSum - Func(x)) >= calculationAccuracy) {
+        while (fabsl(series_sum - Func(x)) >= calculation_accuracy) {
             long double current_term = (powl(iterations, 2) + 1) / Factorial(iterations) * powl((x / 2), iterations);
-            seriesSum += current_term;
+            series_sum += current_term;
             ++iterations;
         }
         // вывод получившихся значений
-        lineOutput(x, seriesSum, iterations);
+        LineOutput(x, series_sum, iterations);
     }
 
     return 0;

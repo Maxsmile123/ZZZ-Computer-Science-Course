@@ -15,7 +15,7 @@ Matrix CreatingMatrix(int32_t n, int32_t m) {
 }
 
 // заполнение матрицы исходными значениями
-void OriginalMatrix(Matrix matrix) {
+void OriginalMatrix(Matrix matrix, int32_t n, int32_t m) {
     matrix[0][0] = 16;
     matrix[0][1] = 15;
     matrix[0][2] = 11;
@@ -75,13 +75,13 @@ void MatrixFree(Matrix matrix, int32_t n) {
     free(matrix);
 }
 
-int main() {
+int Task() {
     // параметры размера матрицы
     int32_t n = 4;
     int32_t m = 4;
 
     Matrix matrix = CreatingMatrix(n, m);
-    matrix = OriginalMatrix(matrix);
+    OriginalMatrix(matrix, n, m);
     int32_t* arr = OneDimensionalArray(matrix, n, m);
 
     AnsweringMatrix(matrix, arr, n, m);

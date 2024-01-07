@@ -6,14 +6,11 @@
 #include <string.h>
 
 int Task() {
-    char filename[50] = {""};
-    printf("file name: ");
-    scanf("%s", filename);
-    FILE *matrix_file = fopen(filename, "r");
+    FILE *matrix_file = fopen("filename.txt", "r");
     char line[50] = {""};
     int counter = 0;
     char temp = 'a';
-    int length = 0;  // только работает если все числа меньше 10 и в конце строк нет пробелов
+    int length = 0;
     while (fgets(line, 50, matrix_file)) {
         while (!(line[length] == line[length + 1])) {
             length += 1;

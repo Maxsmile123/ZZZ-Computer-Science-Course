@@ -10,7 +10,7 @@ int compare_chars(const void *a, const void *b) {
 }
 
 // функция для проверки (есть ли соседние слова, состоящие из одного и того же набора(ов) букв?)
-int areAnagrams(char *word1, char *word2) {
+int AreAnagrams(char *word1, char *word2) {
     // создаем копии слов
     char *copy1 = strdup(word1);
     char *copy2 = strdup(word2);
@@ -42,16 +42,16 @@ int Task() {
     }
 
     // проверяем соседние слова
-    int foundAnagrams = 0;
+    int found_anagrams = 0;
     for (int i = 1; i < sizeof(words) / sizeof(words[0]); i++) {
-        if (areAnagrams(words[i - 1], words[i])) {
-            foundAnagrams = 1;
+        if (AreAnagrams(words[i - 1], words[i])) {
+            found_anagrams = 1;
             break;
         }
     }
 
     // получаем ответ
-    if (foundAnagrams) {
+    if (found_anagrams) {
         printf("YES");
     } else {
         printf("NO");

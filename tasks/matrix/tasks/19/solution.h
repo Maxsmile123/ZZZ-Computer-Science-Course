@@ -31,7 +31,7 @@ Matrix ReadMatrixFromFile(const char* file_name, uint32_t size) {
     return matrix;
 }
 
-int32_t MaxElement(Matrix matrix, uint32_t i,uint32_t size) {
+int32_t MaxElement(Matrix matrix, uint32_t i, uint32_t size) {
     int32_t max_element = INT32_MIN;
     for (uint32_t j = 0; j < size; ++j) {
         if (max_element < matrix[i][j]) {
@@ -40,7 +40,6 @@ int32_t MaxElement(Matrix matrix, uint32_t i,uint32_t size) {
     }
     return max_element;
 }
-
 
 Matrix Solution(Matrix matrix_old, uint32_t size) {
     Matrix matrix_new = CreateMatrix(size);

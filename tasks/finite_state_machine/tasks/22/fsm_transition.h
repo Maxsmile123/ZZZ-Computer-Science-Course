@@ -11,7 +11,7 @@
 int Conditional(const char* word) {
     int count_char = 0;
     int is_word = 0;
-    for (int i = 0; i < strlen(word); i++) {
+    for (int i = 0; (unsigned)i < strlen(word); i++) {
         if (!isspace(word[i]) && !is_word) {
             is_word = 1;
             count_char++;

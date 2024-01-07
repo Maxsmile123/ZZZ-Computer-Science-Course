@@ -5,7 +5,7 @@
 typedef int32_t** Matrix;
 
 // создание матрицы заданных размеров
-Matrix creatingMatrix(int32_t n, int32_t m) {
+Matrix CreatingMatrix(int32_t n, int32_t m) {
     Matrix matrix = (int32_t**)malloc(n * sizeof(int32_t*));
 
     for (int32_t i = 0; i < n; ++i) {
@@ -15,7 +15,7 @@ Matrix creatingMatrix(int32_t n, int32_t m) {
 }
 
 // заполнение матрицы исходными значениями
-Matrix originalMatrix(Matrix matrix) {
+Matrix OriginalMatrix(Matrix matrix) {
     matrix[0][0] = 16;
     matrix[0][1] = 15;
     matrix[0][2] = 11;
@@ -36,21 +36,21 @@ Matrix originalMatrix(Matrix matrix) {
 }
 
 // преобразование двумерной матрицы в одномерный массив с числами от 1 до n*m
-int32_t* oneDimensionalArray(Matrix matrix, int32_t n, int32_t m) {
-    int32_t* linearizedMatrix = (int32_t*)malloc(n * m * sizeof(int32_t));
+int32_t* OneDimensionalArray(Matrix matrix, int32_t n, int32_t m) {
+    int32_t* linearized_matrix = (int32_t*)malloc(n * m * sizeof(int32_t));
 
     int32_t counter = 1;
     for (int32_t i = 0; i < n; ++i) {
         for (int32_t j = 0; j < m; ++j) {
-            linearizedMatrix[i * m + j] = counter++;
+            linearized_matrix[i * m + j] = counter++;
         }
     }
 
-    return linearizedMatrix;
+    return linearized_matrix;
 }
 
 // вывод матрицы и одномерного массива
-void answeringMatrix(Matrix matrix, int32_t* arr, int32_t n, int32_t m) {
+void AnsweringMatrix(Matrix matrix, int32_t* arr, int32_t n, int32_t m) {
 
     printf("матрица в двумерном массиве\n");
     for (int32_t i = 0; i < n; ++i) {
@@ -81,11 +81,11 @@ int main() {
     int32_t n = 4;
     int32_t m = 4;
 
-    Matrix matrix = creatingMatrix(n, m);
-    matrix = originalMatrix(matrix);
-    int32_t* arr = oneDimensionalArray(matrix, n, m);
+    Matrix matrix = CreatingMatrix(n, m);
+    matrix = OriginalMatrix(matrix);
+    int32_t* arr = OneDimensionalArray(matrix, n, m);
 
-    answeringMatrix(matrix, arr, n, m);
+    AnsweringMatrix(matrix, arr, n, m);
     MatrixFree(matrix, n);
 
     // освобождение выделенной памяти

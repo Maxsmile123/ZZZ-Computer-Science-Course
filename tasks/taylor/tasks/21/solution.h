@@ -25,8 +25,8 @@ void TableTitle() {
 }
 
 // функция вывода строки в таблицу для заданных значений "x"
-void LineOutput(long double x, long double seriesSum, int iter) {
-    printf("| %6.2Lf | % 19.15Lf | % 19.15Lf | %5d | % 19.15Lf |\n", x, seriesSum, Func(x), iter,
+void LineOutput(long double x, long double series_sum, int iter) {
+    printf("| %6.2Lf | % 19.15Lf | % 19.15Lf | %5d | % 19.15Lf |\n", x, series_sum, Func(x), iter,
            fabsl(Func(x) - series_sum));
 }
 

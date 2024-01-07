@@ -53,7 +53,7 @@ void AnsweringMatrix(Matrix matrix, int32_t* arr, int32_t n, int32_t m) {
     printf("матрица в двумерном массиве\n");
     for (int32_t i = 0; i < n; ++i) {
         for (int32_t j = 0; j < m; ++j) {
-            printf("%2d ", matrix[i][j]); // %2d для выравнивания двузначных чисел
+            printf("%2d ", matrix[i][j]);
         }
         printf("\n");
     }

@@ -40,13 +40,14 @@ double_t DichotomyMethod(double_t left, double_t right, double_t (*function)(dou
     return middle;
 }
 
-double_t NewtonMethod(double_t left, double_t right, double_t (*function)(double_t), double_t (*function_prime)(double_t)) {
+double_t NewtonMethod(double_t left, double_t right, double_t (*function)(double_t),
+                      double_t (*function_prime)(double_t)) {
     double_t previous = (right - left) / 2;
     double_t current = previous - function(previous) / function_prime(previous);
     double_t next = current - function(current) / function_prime(current);
     int32_t iteration_counter = 0;
     while ((fabs((next - current) / (1 - ((next - current) / (current - previous)))) > DBL_EPSILON) && 
-          (iteration_counter <= MAX_ITERATION)) {
+           (iteration_counter <= MAX_ITERATION)) {
         previous = current;
         current = next;
         next = current - function(current) / function_prime(current);

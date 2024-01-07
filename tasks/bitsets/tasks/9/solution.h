@@ -5,7 +5,7 @@
 #include <string.h>
 
 // функция для сравнения символов
-int compare_chars(const void *a, const void *b) {
+int CompareChars(const void *a, const void *b) {
     return *(const char *)a - *(const char *)b;
 }
 
@@ -15,8 +15,8 @@ int AreAnagrams(char *word1, char *word2) {
     char *copy1 = strdup(word1);
     char *copy2 = strdup(word2);
     // сортируем символы в копиях
-    qsort(copy1, strlen(copy1), sizeof(char), compare_chars);
-    qsort(copy2, strlen(copy2), sizeof(char), compare_chars);
+    qsort(copy1, strlen(copy1), sizeof(char), CompareChars);
+    qsort(copy2, strlen(copy2), sizeof(char), CompareChars);
     // сравниваем отсортированные строки
     int result = strcmp(copy1, copy2) == 0;
 

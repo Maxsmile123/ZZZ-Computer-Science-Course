@@ -24,7 +24,7 @@ int Task() {
     const char *three_or_four = "[34]";
     const char *all_numbers = "[^01234]";
     char num[] = "124";
-    scanf("%s", num);
+    printf("допустим оно будет 124\n");
     int n_num = 0;
     State state = start;
     while (true) {

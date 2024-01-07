@@ -1,9 +1,9 @@
 #pragma once
 
 #include <float.h>
+#include <math.h>
 #include <stdint.h>
 #include <stdio.h>
-#include <math.h>
 
 long double Func(long double x) {
     return (((x * x) / 4) + (x / 2) + 1) * expl(x / 2);
@@ -26,7 +26,8 @@ void tableTitle() {
 
 // функция вывода строки в таблицу для заданных значений "x"
 void lineOutput(long double x, long double seriesSum, int iter) {
-    printf("| %6.2Lf | % 19.15Lf | % 19.15Lf | %5d | % 19.15Lf |\n", x, seriesSum, Func(x), iter, fabsl(Func(x) - seriesSum));
+    printf("| %6.2Lf | % 19.15Lf | % 19.15Lf | %5d | % 19.15Lf |\n", x, seriesSum, Func(x), iter,
+        fabsl(Func(x) - seriesSum));
 }
 
 int Task() {
